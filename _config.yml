@@ -1,31 +1,11 @@
-# Site settings
 title: OWASP Top 10 Blog
-email: haidang@example.com
+email: your-email@example.com
 description: >-
-  A personal blog documenting hands-on practice with the OWASP Top 10 using PortSwigger Web Security Academy labs.
-  Includes code, payloads, writeups, and tips for each vulnerability category.
-baseurl: "/top10-owasp-blog"  # ⚠️ Đúng với tên repo
-url: "https://haidang17-IA.github.io"  # ⚠️ Đúng với tên user GitHub
-
-# Social
-twitter_username: haidang17
-github_username: haidang17-IA
-
-# Build settings
+  A personal blog documenting my learning journey with the OWASP Top 10 vulnerabilities and PortSwigger Labs.
+baseurl: "/top10-owasp-blog" 
+url: "https://haidang17-ia.github.io" 
 theme: minima
 plugins:
   - jekyll-feed
-  - jekyll-seo-tag
 
-# Exclude from processing
-exclude:
-  - .sass-cache/
-  - .jekyll-cache/
-  - Gemfile
-  - Gemfile.lock
-  - node_modules/
-  - README.md
-  - vendor/
-
-# Markdown
 markdown: kramdown
