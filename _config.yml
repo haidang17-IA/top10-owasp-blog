@@ -1,11 +1,7 @@
 title: OWASP Top 10 Blog
-email: your-email@example.com
-description: >-
-  A personal blog documenting my learning journey with the OWASP Top 10 vulnerabilities and PortSwigger Labs.
+description: A personal blog about OWASP Top 10 and PortSwigger labs.
 baseurl: "/top10-owasp-blog" 
-url: "https://haidang17-ia.github.io" 
+url: "https://haidang17-ia.github.io"
 theme: minima
 plugins:
   - jekyll-feed
-
-markdown: kramdown
