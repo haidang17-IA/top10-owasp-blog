@@ -61,6 +61,12 @@ or
 ```sql
 ' UNION SELECT username, password FROM users --
 ```
+<div style="text-align: center;">
+  <img src="/top10-owasp-blog/assets/images/2.png" alt=" " style="width: 20%; border: 1px solid #ccc; border-radius: 8px;">
+  <p><em>Figure 1: SQL Injection workflow</em></p>
+</div>
+
+```
 
 **Explanation:**  
 By using `UNION`, attackers can append the output of a second query to the original result.
