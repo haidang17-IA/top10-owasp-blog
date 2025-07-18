@@ -1,5 +1,6 @@
 title: OWASP Top 10 Blog
 description: A personal blog about OWASP Top 10 and PortSwigger labs.
+theme: minima
 baseurl: "/top10-owasp-blog" 
 url: "https://haidang17-ia.github.io"
 theme: minima

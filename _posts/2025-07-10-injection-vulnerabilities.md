@@ -1,6 +1,6 @@
 ---
 title: "Understanding SQL Injection - OWASP Top 10 & PortSwigger Labs"
-date: 2025-07-17
+date: 2025-07-10
 layout: post
 tags: [owasp, sql-injection, web-security, portswigger]
 ---
