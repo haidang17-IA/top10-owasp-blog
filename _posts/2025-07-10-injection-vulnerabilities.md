@@ -21,7 +21,7 @@ Attackers insert SQL into login fields to trick the system into granting access 
 ' OR 1=1 --
 ```
 <div style="text-align: center;">
-  <img src="/top10-owasp-blog/assets/images/sql-diagram.png" alt="SQL Injection Diagram" style="width: 70%; border: 1px solid #ccc; border-radius: 8px;">
+  <img src="/top10-owasp-blog/assets/images/sql-diagram.png" alt="SQL Injection Diagram" style="width: 20%; border: 1px solid #ccc; border-radius: 8px;">
   <p><em>Figure 1: SQL Injection workflow</em></p>
 </div>
 
