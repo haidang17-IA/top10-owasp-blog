@@ -5,3 +5,10 @@ theme: minima
 url: "https://haidang17-ia.github.io"
 plugins:
   - jekyll-feed
+
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      css: "/assets/css/custom.css"
