@@ -16,8 +16,7 @@ tag: [OWASP, Web Security, Authentication]
 
 &nbsp; <img src="/top10-owasp-blog/assets/images/5.gif" alt=" " style="width: 70%; border: 1px solid #ccc; border-radius: 8px;">
 
-&nbsp; <p><em>Figure 1: SQL Injection workflow</em></p>
-
+&nbsp; 
 </div>
 
 
@@ -36,7 +35,7 @@ tag: [OWASP, Web Security, Authentication]
 
 &nbsp;     <li><a href="#how-do-authentication-vulnerabilities-emerge">How Do Authentication Vulnerabilities Emerge?</a></li>
 
-&nbsp;     <li><a href="#6-most-common-authentication-vulnerabilities">11 Most Common Authentication Vulnerabilities</a>
+&nbsp;     <li><a href="#6-most-common-authentication-vulnerabilities">6 Most Common Authentication Vulnerabilities</a>
 
 &nbsp;       <ul>
 
@@ -70,7 +69,7 @@ tag: [OWASP, Web Security, Authentication]
 
 
 
-\## What is Broken Authentication?
+## What is Broken Authentication?
 
 
 
@@ -86,8 +85,7 @@ If authentication was not present, it would leave the critical resources (often 
 
 &nbsp; <img src="/top10-owasp-blog/assets/images/6.png" alt=" " style="width: 70%; border: 1px solid #ccc; border-radius: 8px;">
 
-&nbsp; <p><em>Figure 2: Auth Flow Diagram</em></p>
-
+&nbsp; 
 </div>
 
 
@@ -100,7 +98,7 @@ Applications vulnerable to broken authentication vulnerabilities fail to validat
 
 
 
-\## How Do Authentication Vulnerabilities Emerge?
+## How Do Authentication Vulnerabilities Emerge?
 
 
 
@@ -108,7 +106,7 @@ Authentication vulnerabilities primarily stem from three causes: poor security d
 
 
 
-\## 11 Most Common Authentication Vulnerabilities
+## 6 Most Common Authentication Vulnerabilities
 
 
 
@@ -120,7 +118,7 @@ Here are 6 of the most common authentication-based vulnerabilities to watch out 
 
 
 
-\### 1. Flawed Brute-Force Protection
+### 1. Flawed Brute-Force Protection
 
 
 
@@ -132,7 +130,7 @@ If there’s a flawed brute-force protection system such as a flaw in the authen
 
 
 
-\### 2. Username Enumeration
+### 2. Username Enumeration
 
 
 
@@ -170,7 +168,7 @@ The problem with username enumeration is that attackers can tell what usernames 
 
 
 
-\### 3. Staying Logged In
+### 3. Staying Logged In
 
 
 
@@ -190,7 +188,7 @@ They can use malicious techniques like brute-force attacks to predict cookies, a
 
 
 
-\### 4. Unsecure Password Change and Recovery
+### 4. Unsecure Password Change and Recovery
 
 
 
@@ -214,7 +212,7 @@ If the password recovery functionality is flawed, attackers can potentially use 
 
 
 
-\### 5. Flawed Two-Factor Authentication
+### 5. Flawed Two-Factor Authentication
 
 
 
@@ -226,7 +224,7 @@ Attackers can figure out the four- and six-digit 2FA verification codes through 
 
 
 
-\### 6. Human Negligence
+### 6. Human Negligence
 
 
 
@@ -244,7 +242,7 @@ Human error can result in serious authentication vulnerabilities that are far ea
 
 
 
-\## How to Prevent Authentication Vulnerabilities?
+## How to Prevent Authentication Vulnerabilities?
 
 
 
@@ -256,19 +254,19 @@ Here are eight best practices to prevent authentication-based vulnerabilities an
 
 
 
-\- \*\*1. Implement a reliable brute-force protection system:\*\* Brute-force attacks can be prevented by enforcing account lockouts, rate limiting  
+- **1. Implement a reliable brute-force protection system:** Brute-force attacks can be prevented by enforcing account lockouts, rate limiting  
 
-\- \*\*2. Enforce a secure password policy:\*\* Create a password checker that tells users how strong their passwords are in real-time  
+- **2. Enforce a secure password policy:** Create a password checker that tells users how strong their passwords are in real-time 
 
-\- \*\*3. Modify cookie headers:\*\* Use `HttpOnly` and `SameSite` tags when setting cookies to protect against XSS and CSRF  
+- **3. Modify cookie headers:** Use `HttpOnly` and `SameSite` tags when setting cookies to protect against XSS and CSRF  
 
-\- \*\*4. Check your verification code logic carefully:\*\* Audit all permission checks in your code to prevent privilege escalation  
+- **4. Check your verification code logic carefully:** Audit all permission checks in your code to prevent privilege escalation  
 
-\- \*\*5. Implement Multi-Factor Authentication Correctly:\*\* Ensure 2FA codes are secure, random, and can't be reused or bypassed  
+- **5. Implement Multi-Factor Authentication Correctly:** Ensure 2FA codes are secure, random, and can't be reused or bypassed 
 
 
 
-\## Conclusion
+## Conclusion
 
 
 
@@ -276,15 +274,15 @@ Authentication vulnerabilities — whether related to website or application sec
 
 
 
-\## References
+## References
 
 
 
-\- \[OWASP Top 10 – Broken Authentication](https://owasp.org/Top10/A02\_2021-Cryptographic\_Failures/)
+- [OWASP Top 10 – Broken Authentication](https://owasp.org/Top10/A02\_2021-Cryptographic\_Failures/)
 
-\- \[OWASP Authentication Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Authentication\_Cheat\_Sheet.html)
+- [OWASP Authentication Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Authentication\_Cheat\_Sheet.html)
 
-\- \[PortSwigger: Authentication vulnerabilities](https://portswigger.net/web-security/authentication)
+- [PortSwigger: Authentication vulnerabilities](https://portswigger.net/web-security/authentication)
 
 
 
