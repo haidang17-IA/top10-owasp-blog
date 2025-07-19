@@ -4,10 +4,26 @@ date: 2025-07-10
 layout: post
 tags: [owasp, sql-injection, web-security, portswigger]
 ---
+##  Table of Contents
 
+- [Introduction](#introduction)
+- [Why Is SQL Injection a Major Security Threat?](#why-is-sql-injection-a-major-security-threat)
+- [How Do SQL Injection Attacks Work?](#how-do-sql-injection-attacks-work)
+- [1. Authentication and Logic Bypass](#1-authentication-and-logic-bypass)
+- [2. Blind SQL Injection Attack](#2-blind-sql-injection-attack)
+- [3. Time-Based Blind SQL Injection](#3-time-based-blind-sql-injection)
+- [4. Error-Based SQL Injection](#4-error-based-sql-injection)
+- [5. Union-Based SQL Injection](#5-union-based-sql-injection)
+- [6. Out-of-Band SQL Injection](#6-out-of-band-sql-injection)
+- [7. Second-Order SQL Injection](#7-second-order-sql-injection)
+- [Summary](#summary)
+- [Conclusion](#conclusion)
+- [References](#references)
+
+---
 ## Introduction
 
-SQL Injection (SQLi) is one of the most common and dangerous vulnerabilities in web applications. It allows attackers to interfere with the queries that an application makes to its database. This blog post is a detailed summary of my hands-on learning with **PortSwigger Academy**, focusing on SQLi types, payloads, and real-world examples. All labs mentioned here have been tested and documented [on this GitHub repository](https://github.com/haidang17-IA/owasp-blog).
+SQL Injection (SQLi) is one of the most common and dangerous vulnerabilities in web applications. It allows attackers to interfere with the queries that an application makes to its database. This blog post is a detailed summary of my hands-on learning with **PortSwigger Academy**, focusing on SQLi types, payloads, and real-world examples. All labs mentioned here have been tested and documented [on this GitHub repository](https://github.com/haidang17-IA/owasp-top10-labs).
 
 ---
 
@@ -260,7 +276,7 @@ SQL Injection is a critical vulnerability with deep impact potential — from lo
 - **Test regularly with tools like Burp Suite**  
 - **Understand how your queries are built**
 
-You can find my detailed lab walkthroughs, payloads, and source code on [my GitHub blog repo](https://github.com/haidang17-IA/owasp-blog).
+You can find my detailed lab walkthroughs, payloads, and source code on [my GitHub blog repo](https://github.com/haidang17-IA/owasp-top10-labs).
 
 ---
 
