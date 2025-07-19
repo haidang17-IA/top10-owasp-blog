@@ -4,21 +4,28 @@ date: 2025-07-10
 layout: post
 tags: [owasp, sql-injection, web-security, portswigger]
 ---
-##  Table of Contents
+<div style="background-color: #f9f9f9; padding: 20px; border-left: 5px solid #007acc; border-radius: 6px; margin-bottom: 20px;">
 
-- [Introduction](#introduction)
-- [Why Is SQL Injection a Major Security Threat?](#why-is-sql-injection-a-major-security-threat)
-- [How Do SQL Injection Attacks Work?](#how-do-sql-injection-attacks-work)
-- [1. Authentication and Logic Bypass](#1-authentication-and-logic-bypass)
-- [2. Blind SQL Injection Attack](#2-blind-sql-injection-attack)
-- [3. Time-Based Blind SQL Injection](#3-time-based-blind-sql-injection)
-- [4. Error-Based SQL Injection](#4-error-based-sql-injection)
-- [5. Union-Based SQL Injection](#5-union-based-sql-injection)
-- [6. Out-of-Band SQL Injection](#6-out-of-band-sql-injection)
-- [7. Second-Order SQL Injection](#7-second-order-sql-injection)
-- [Summary](#summary)
-- [Conclusion](#conclusion)
-- [References](#references)
+<strong> Table of Contents</strong>
+
+<ul>
+  <li><a href="#introduction">Introduction</a></li>
+  <li><a href="#why-is-sql-injection-a-major-security-threat">Why Is SQL Injection a Major Security Threat?</a></li>
+  <li><a href="#how-do-sql-injection-attacks-work">How Do SQL Injection Attacks Work?</a></li>
+  <li><a href="#1-authentication-and-logic-bypass">1. Authentication and Logic Bypass</a></li>
+  <li><a href="#2-blind-sql-injection-attack">2. Blind SQL Injection Attack</a></li>
+  <li><a href="#3-time-based-blind-sql-injection">3. Time-Based Blind SQL Injection</a></li>
+  <li><a href="#4-error-based-sql-injection">4. Error-Based SQL Injection</a></li>
+  <li><a href="#5-union-based-sql-injection">5. Union-Based SQL Injection</a></li>
+  <li><a href="#6-out-of-band-sql-injection">6. Out-of-Band SQL Injection</a></li>
+  <li><a href="#7-second-order-sql-injection">7. Second-Order SQL Injection</a></li>
+  <li><a href="#summary">Summary</a></li>
+  <li><a href="#conclusion">Conclusion</a></li>
+  <li><a href="#references">References</a></li>
+</ul>
+
+</div>
+
 
 ---
 ## Introduction
