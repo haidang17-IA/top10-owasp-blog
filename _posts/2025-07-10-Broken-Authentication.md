@@ -8,9 +8,9 @@ layout: post
 
 categories: \[OWASP, Web Security, Authentication]
 
-
-
 ---
+
+
 
 <div style="text-align: center;">
 
@@ -20,19 +20,15 @@ categories: \[OWASP, Web Security, Authentication]
 
 </div>
 
----
-
 
 
 <div style="display: flex; gap: 30px; align-items: flex-start; margin-bottom: 30px;">
-
-
 
 &nbsp; <!-- Table of Contents -->
 
 &nbsp; <div style="flex: 1; background-color: #f9f9f9; padding: 20px; border-left: 5px solid #007acc; border-radius: 6px;">
 
-&nbsp;   <strong> Table of Contents</strong>
+&nbsp;   <strong>Table of Contents</strong>
 
 &nbsp;   <ul>
 
@@ -70,13 +66,11 @@ categories: \[OWASP, Web Security, Authentication]
 
 &nbsp; </div>
 
-
-
 </div>
 
----
 
-\##  What is Broken Authentication?
+
+\## What is Broken Authentication?
 
 
 
@@ -84,35 +78,29 @@ Authentication is the act of validating the user's credentials before granting h
 
 
 
-If authentication was not present, it would leave the critical resources (often with elevated privileges) exposed to anyone on the internet, including unauthenticated and unauthorized users.
-
-It ranks high on the \[OWASP Top 10](https://owasp.org/Top10) because of its impact and frequency.
+If authentication was not present, it would leave the critical resources (often with elevated privileges) exposed to anyone on the internet, including unauthenticated and unauthorized users. It ranks high on the \[OWASP Top 10](https://owasp.org/Top10) because of its impact and frequency.
 
 
-
----
 
 <div style="text-align: center;">
 
 &nbsp; <img src="/top10-owasp-blog/assets/images/6.png" alt=" " style="width: 70%; border: 1px solid #ccc; border-radius: 8px;">
 
-&nbsp; <p><em>Figure 1: SQL Injection workflow</em></p>
+&nbsp; <p><em>Figure 2: Auth Flow Diagram</em></p>
 
 </div>
 
----
 
-&nbsp;A simple authentication process often resolves around the validation of a supplied set of user credentials (email and password). However, various other authentication mechanisms are being applied today to prevent unauthenticated users from accessing controlled resources. And when this authentication method is incorrectly configured, it can open a new attack vector.
+
+A simple authentication process often revolves around the validation of a supplied set of user credentials (email and password). However, various other authentication mechanisms are being applied today to prevent unauthenticated users from accessing controlled resources. And when this authentication method is incorrectly configured, it can open a new attack vector.
 
 
 
 Applications vulnerable to broken authentication vulnerabilities fail to validate the user's access and as a result, expose the protected application.
 
----
 
 
-
-\##  How Do Authentication Vulnerabilities Emerge?
+\## How Do Authentication Vulnerabilities Emerge?
 
 
 
@@ -120,13 +108,7 @@ Authentication vulnerabilities primarily stem from three causes: poor security d
 
 
 
----
-
-
-
-
-
-\##  11 Most Common Authentication Vulnerabilities
+\## 11 Most Common Authentication Vulnerabilities
 
 
 
@@ -150,9 +132,9 @@ If there’s a flawed brute-force protection system such as a flaw in the authen
 
 
 
-
-
 \### 2. Username Enumeration
+
+
 
 It can make an attacker’s life easier by lowering the cost for other attacks, such as brute-force attacks or weak credential checks.
 
@@ -160,7 +142,7 @@ It can make an attacker’s life easier by lowering the cost for other attacks, 
 
 This process of username enumeration confirms whether or not a username is valid. For example:
 
----
+
 
 <div style="text-align: center;">
 
@@ -168,11 +150,11 @@ This process of username enumeration confirms whether or not a username is valid
 
 </div>
 
----
+
 
 In this case, the username is correct but the password isn’t.
 
---
+
 
 <div style="text-align: center;">
 
@@ -180,9 +162,9 @@ In this case, the username is correct but the password isn’t.
 
 </div>
 
---
 
-Here, the username is invalid.
+
+Here, the username is invalid.  
 
 The problem with username enumeration is that attackers can tell what usernames are valid. Then, they can try to hack valid user accounts using brute-force techniques without wasting their time and money testing a multitude of invalid account names.
 
@@ -190,9 +172,11 @@ The problem with username enumeration is that attackers can tell what usernames 
 
 \### 3. Staying Logged In
 
+
+
 A "Remember me" or "Keep me logged in" checkbox beneath a login form makes it super easy to stay logged in after closing a session. It generates a cookie that lets you skip the process of logging in.
 
----
+
 
 <div style="text-align: center;">
 
@@ -200,7 +184,7 @@ A "Remember me" or "Keep me logged in" checkbox beneath a login form makes it su
 
 </div>
 
----
+
 
 They can use malicious techniques like brute-force attacks to predict cookies, and cross-site scripting (XSS) to hack user accounts by allowing a malicious server to make use of a legitimate cookie.
 
@@ -208,9 +192,11 @@ They can use malicious techniques like brute-force attacks to predict cookies, a
 
 \### 4. Unsecure Password Change and Recovery
 
+
+
 Sometimes, users forget or just want to change their passwords and click the "Forgot password" or "Lost your password" links.
 
----
+
 
 <div style="text-align: center;">
 
@@ -218,13 +204,13 @@ Sometimes, users forget or just want to change their passwords and click the "Fo
 
 </div>
 
----
+
 
 The password reset process poses an authentication vulnerability if an application uses a weak password recovery mechanism such as easy security questions, no CAPTCHAs, or password reset e-mails with overly long or no timeouts.
 
 
 
-If the password recovery functionality is flawed, attackers can potentially use brute-force techniques or access to other compromised accounts to gain access to user accounts
+If the password recovery functionality is flawed, attackers can potentially use brute-force techniques or access to other compromised accounts to gain access to user accounts.
 
 
 
@@ -240,23 +226,21 @@ Attackers can figure out the four- and six-digit 2FA verification codes through 
 
 
 
-
-
-
-
 \### 6. Human Negligence
+
+
 
 Human error can result in serious authentication vulnerabilities that are far easier to take advantage of than brute-force attacks, SQL injections, and authentication bypasses. This negligence includes actions such as:
 
 
 
--Leaving a computer on and unlocked in a public place
+\- Leaving a computer on and unlocked in a public place  
 
--Losing devices to theft
+\- Losing devices to theft  
 
--Leaking sensitive information to strangers
+\- Leaking sensitive information to strangers  
 
--Writing bad code
+\- Writing bad code
 
 
 
@@ -268,19 +252,27 @@ While authentication vulnerabilities are easy to identify, they greatly impact c
 
 
 
-Here are eight best practices to prevent authentication-based vulnerabilities and keep critical information safe.
+Here are eight best practices to prevent authentication-based vulnerabilities and keep critical information safe:
 
-* \*\* 1.Implement a reliable brute-force protection system: \*\* Brute-force attacks can be prevented by enforcing account lockouts, rate limiting
-* \*\* 2.Enforce a secure password policy: \*\* Do this by creating a password checker that tells users how strong their passwords are in real-time.
-* \*\* 3.Modify cookie headers:\*\*  Modifying cookie headers protects them against malicious attacks. Using the HttpOnly and SameSite tags when setting cookie headers prevents them from XSS and CSRF attacks, respectively.
-* \*\* 4.Check Your Verification Code Carefully :\*\* Think about all the places your code checks for permissions or user status. Double-checking this logic is one of the best ways to catch security holes before an attacker does.
-* \*\* 5.Implement Multi-Factor Authentication Correctly:\*\* Adding multi-factor authentication (MFA) is a great step up from just using passwords. However, it's only effective if done right. Make sure the implementation is solid and that the verification codes it generates are secure and truly random. A poorly built MFA system can offer a false sense of security.
+
+
+\- \*\*1. Implement a reliable brute-force protection system:\*\* Brute-force attacks can be prevented by enforcing account lockouts, rate limiting  
+
+\- \*\*2. Enforce a secure password policy:\*\* Create a password checker that tells users how strong their passwords are in real-time  
+
+\- \*\*3. Modify cookie headers:\*\* Use `HttpOnly` and `SameSite` tags when setting cookies to protect against XSS and CSRF  
+
+\- \*\*4. Check your verification code logic carefully:\*\* Audit all permission checks in your code to prevent privilege escalation  
+
+\- \*\*5. Implement Multi-Factor Authentication Correctly:\*\* Ensure 2FA codes are secure, random, and can't be reused or bypassed  
 
 
 
 \## Conclusion
 
-Authentication vulnerabilities — whether related to website or application security or infrastructure access — are critical cybersecurity issues you can identify and prevent. 
+
+
+Authentication vulnerabilities — whether related to website or application security or infrastructure access — are critical cybersecurity issues you can identify and prevent.
 
 
 
@@ -293,14 +285,6 @@ Authentication vulnerabilities — whether related to website or application sec
 \- \[OWASP Authentication Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Authentication\_Cheat\_Sheet.html)
 
 \- \[PortSwigger: Authentication vulnerabilities](https://portswigger.net/web-security/authentication)
-
-
-
-
-
-
-
-
 
 
 
