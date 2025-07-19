@@ -27,12 +27,12 @@ tags: [owasp, sql-injection, web-security, portswigger]
 </div>
 
 
----
+
 ## Introduction
 
 SQL Injection (SQLi) is one of the most common and dangerous vulnerabilities in web applications. It allows attackers to interfere with the queries that an application makes to its database. This blog post is a detailed summary of my hands-on learning with **PortSwigger Academy**, focusing on SQLi types, payloads, and real-world examples. All labs mentioned here have been tested and documented [on this GitHub repository](https://github.com/haidang17-IA/owasp-top10-labs).
 
----
+
 
 ## Why Is SQL Injection a Major Security Threat?
 
@@ -40,7 +40,7 @@ SQLi allows attackers to bypass basic authentication mechanisms to access your d
 
 It’s hard to trace SQLi attacks as they alter code logic, which makes detection and prevention difficult. They can also install malware to take the full system controls and cause website defacement, complete system failure, and ransomware infections. They can steal data, encrypt data, demand ransom, or expose your sensitive business data to the public to cause reputational damage.
 
----
+
 
 ## How Do SQL Injection Attacks Work?
 
@@ -63,7 +63,7 @@ SELECT * FROM users WHERE username = 'admin’ --' AND password = 'anything';
 
 When you use ‘--’ in an SQL command, it means you are using a comment operator to ignore everything that follows it. It allows the attacker to log in as the ‘admin’ user and proceed without entering the password. Result? They gain unauthorized access to the app’s database and execute their malicious intent.
 
----
+
 
 ## 1. Authentication and Logic Bypass
 
@@ -92,7 +92,6 @@ Look for suspicious or unusual app activities and signs that could indicate the 
 - Implement proper authentication and error handling  
 - Least privilege access
 
----
 
 ## 2. Blind SQL Injection Attack
 
@@ -128,7 +127,6 @@ or
 - Restrict access  
 - Continuous monitoring
 
----
 
 ## 3. Time-Based Blind SQL Injection
 
@@ -158,7 +156,6 @@ SELECT * FROM orders WHERE user_id = '$uid' AND paid = 1
 
 If the attacker makes `paid = 1` always true via SQLi, the system delivers the product for free.
 
----
 
 **Prevention:**  
 - Validate inputs  
@@ -168,7 +165,6 @@ If the attacker makes `paid = 1` always true via SQLi, the system delivers the p
 - Limit access  
 - Use advanced tools
 
----
 
 ## 4. Error-Based SQL Injection
 
@@ -202,7 +198,6 @@ Prevent error-based SQLi attacks from harming your organization in terms of fina
 - Use WAFs  
 - Audit and update
 
----
 
 ## 5. Union-Based SQL Injection
 
@@ -230,7 +225,6 @@ Detection: Detecting a union-based SQL injection lets you combat and neutralize 
 - Validate inputs  
 - Use advanced tools
 
----
 
 ## 6. Out-of-Band SQL Injection
 
@@ -250,7 +244,6 @@ When an attacker injects harmful SQL commands into the database, it triggers or 
 - Use allowlists: Create an allowlist of authorized IP addresses and domains that your data must communicate with, rejecting all others.  
 - Disable external communications
 
----
 
 ## 7. Second-Order SQL Injection
 
