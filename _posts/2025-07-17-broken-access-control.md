@@ -37,17 +37,24 @@ According to [OWASP Top 10](https://owasp.org/Top10/), Broken Access Control is 
 The risk associated with broken access control is high because it directly affects the confidentiality, integrity, and availability of data. An attacker exploiting this vulnerability can potentially access, modify, or delete any data on the system. This includes user data, system data, application data, and more. The larger the system and the more sensitive the data, the higher the risk.
 
 
+ ## Broken Access Control Categories
 
-## Examples and Types of Broken Access Control Attacks
+## 1. Vertical Access Control
+This restricts access based on user roles. For example, regular users should not be able to access admin functions or interfaces.
 
-### URL Manipulation
+ Common issues:
+Unprotected admin functionality: Admin panels or privileged features are accessible without verifying the user’s role.
 
-URL manipulation is a straightforward method used by attackers to exploit broken access control vulnerabilities. This involves changing the URL in an attempt to bypass access controls and gain unauthorized access to sensitive data or functionality.
+Access control via client-side parameters: The application relies on values like role=admin in a cookie or URL to control access.
 
-**Example**:  
-Consider a URL that includes the user’s ID:  
-`http://example.com/user/123`  
-An attacker could change the ID to `http://example.com/user/456` to access another user’s data. If the application doesn’t verify access rights before responding, it is vulnerable.
+Platform misconfiguration: Servers use headers like X-Original-URL to determine access without proper validation.
+
+Case sensitivity or alternate paths: /admin is protected, but /ADMIN is not — attackers exploit such discrepancies.
+
+ Example labs (from PortSwigger):
+Unprotected admin functionality
+
+User role controlled by request parameter
 
 
 <div align="center">
@@ -55,24 +62,33 @@ An attacker could change the ID to `http://example.com/user/456` to access anoth
 </div>
 
 
+## 2. Horizontal Access Control
+This ensures that users cannot access each other’s resources, even if they are on the same role level (e.g., two normal users).
 
-### Exploiting Endpoints
-
-Endpoints are the points of interaction between an application and the rest of the system. These could be APIs, microservices, etc. If they are not properly secured, attackers can bypass access control by sending unauthorized requests.
-
-They can find endpoints by scanning, code analysis, or URL guessing. Once found, attackers may extract or modify sensitive data.
-
+ Common issue:
+Insecure Direct Object Reference (IDOR): Users can change a parameter like user_id=1002 in a URL or request to access other users’ data.
 
 
-### Elevating User Privilege
 
-Privilege escalation involves gaining access to a regular user account, then using access control flaws to gain admin rights.
+## 3. Privilege Escalation (Horizontal → Vertical)
+Occurs when a low-privileged user exploits weaknesses to gain higher-level permissions, such as accessing admin functions.
 
-**Example**: An attacker gains access using a weak password, then changes privileges to admin by modifying requests or exploiting backend logic.
 
-<div align="center">
-  <img src="{{ site.baseurl }}/assets/images/b3.png" alt="Privilege Escalation Example" width="300" style="border: 1px solid #ccc; border-radius: 8px;">
-</div>
+A regular user changes their role to "admin" via a hidden parameter or cookie value.
+
+Exploiting misconfigured access checks or missing validation to access restricted features.
+
+
+## 4. Context-dependent Access Control
+The application should validate access based on the context or flow — for instance, only allowing checkout if the user has passed through the cart page.
+
+Attackers directly access endpoints without completing prerequisite steps or workflows.
+
+## 5. Referer or Location-based Control
+Some applications wrongly rely on HTTP headers like Referer or Origin to enforce access rules — which can be forged or manipulated.
+
+Assuming that a request is safe because it came from a specific page or location.
+
 
 
 ## 4 Ways to Prevent Broken Access Control
