@@ -1,12 +1,12 @@
 ---
 
-title: "Broken Authentication: OWASP Top 10 \& Real-World Exploitation"
+title: "Broken Authentication: OWASP Top 10 & Real-World Exploitation"
 
 date: 2025-07-10
 
 layout: post
 
-categories: \[OWASP, Web Security, Authentication]
+tag: [OWASP, Web Security, Authentication]
 
 ---
 
@@ -36,7 +36,7 @@ categories: \[OWASP, Web Security, Authentication]
 
 &nbsp;     <li><a href="#how-do-authentication-vulnerabilities-emerge">How Do Authentication Vulnerabilities Emerge?</a></li>
 
-&nbsp;     <li><a href="#11-most-common-authentication-vulnerabilities">11 Most Common Authentication Vulnerabilities</a>
+&nbsp;     <li><a href="#6-most-common-authentication-vulnerabilities">11 Most Common Authentication Vulnerabilities</a>
 
 &nbsp;       <ul>
 
