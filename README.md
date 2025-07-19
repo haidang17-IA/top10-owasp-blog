@@ -15,11 +15,11 @@ Each post focuses on a specific OWASP vulnerability category and includes:
 
 The blog is structured as a learning log with weekly posts:
 
-- **Injection** – June 28, 2025  
-- **Broken Authentication** – July 5, 2025  
+- **Injection**
+- **Broken Authentication** 
 - **Sensitive Data Exposure**  
-- **XML External Entities (XXE)** – July 12, 2025  
-- **Broken Access Control** – July 19, 2025  
+- **XML External Entities (XXE)** 
+- **Broken Access Control** 
 - **Security Misconfiguration**  
 - **Cross-Site Scripting (XSS)**  
 - **Insecure Deserialization**  
