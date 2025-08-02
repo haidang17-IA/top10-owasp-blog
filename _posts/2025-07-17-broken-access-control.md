@@ -5,6 +5,7 @@ date: 2025-07-17
 categories: [OWASP, Access-Control, PortSwigger]
 ---
 
+
 ## Table of Contents
 - [What Is a Broken Access Control Vulnerability?](#what-is-a-broken-access-control-vulnerability)
 - [The Impact and Risk of Broken Access Controls](#the-impact-and-risk-of-broken-access-controls)
@@ -137,3 +138,5 @@ Implementing these strategies not only reduces your attack surface but also buil
 - [OWASP Top 10: Broken Access Control](https://owasp.org/Top10/A01_2021-Broken_Access_Control/)
 - [PortSwigger Academy – Access Control Vulnerabilities](https://portswigger.net/web-security/access-control)
 - [CWE-284: Improper Access Control](https://cwe.mitre.org/data/definitions/284.html)
+
+
