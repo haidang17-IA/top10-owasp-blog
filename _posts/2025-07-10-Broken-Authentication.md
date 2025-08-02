@@ -10,6 +10,7 @@ tag: [OWASP, Web Security, Authentication]
 
 ---
 
+<div style="max-width: 900px; margin: auto; padding: 20px;">
 
 
 <div style="text-align: center;">
@@ -284,5 +285,5 @@ Authentication vulnerabilities — whether related to website or application sec
 
 - [PortSwigger: Authentication vulnerabilities](https://portswigger.net/web-security/authentication)
 
-
+</div>
 
