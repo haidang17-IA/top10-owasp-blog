@@ -1,14 +1,11 @@
----
 
+---
 layout: post
-
-title: "Sensitive Data Exposure \& XML External Entities (XXE)"
-
+title: 'Sensitive Data Exposure & XML External Entities (XXE)'
 date: 2025-07-12
-
-categories: \[OWASP, Sensitive Data, XXE, PortSwigger]
-
+categories: [OWASP, Sensitive Data, XXE, PortSwigger]
 ---
+
 
 
 

@@ -1,13 +1,8 @@
 ---
-
-title: "Cross-Site Scripting (XSS): OWASP Top 10 \& Real-World Exploitation"
-
+title: 'Cross-Site Scripting (XSS): OWASP Top 10 & Real-World Exploitation'
 date: 2025-07-24
-
 layout: post
-
-tag: \[OWASP, Web Security, XSS]
-
+tags: [OWASP, Web Security, XSS]
 ---
 
 
