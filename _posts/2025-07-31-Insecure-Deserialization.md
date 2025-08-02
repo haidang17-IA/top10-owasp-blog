@@ -2,7 +2,7 @@
 
 title: "Cross-Site Scripting (XSS): OWASP Top 10 \& Real-World Exploitation"
 
-date: 2025-07-24
+date: 2025-07-31
 
 layout: post
 
