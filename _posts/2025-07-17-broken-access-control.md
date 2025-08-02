@@ -6,16 +6,29 @@ categories: [OWASP, Access-Control, PortSwigger]
 ---
 
 
-## Table of Contents
-- [What Is a Broken Access Control Vulnerability?](#what-is-a-broken-access-control-vulnerability)
-- [The Impact and Risk of Broken Access Controls](#the-impact-and-risk-of-broken-access-controls)
-- [Examples and Types of Broken Access Control Attacks](#examples-and-types-of-broken-access-control-attacks)
-  - [URL Manipulation](#url-manipulation)
-  - [Exploiting Endpoints](#exploiting-endpoints)
-  - [Elevating User Privilege](#elevating-user-privilege)
-- [4 Ways to Prevent Broken Access Control](#4-ways-to-prevent-broken-access-control)
-- [Conclusion](#conclusion)
-- [References](#references)
+<div style="background-color: #f9f9f9; padding: 20px; border-left: 5px solid #007acc; border-radius: 6px; margin-bottom: 20px;">
+
+  <strong style="font-size: 18px;">Table of Contents</strong>
+
+  <ul style="margin-top: 10px; padding-left: 20px;">
+    <li><a href="#what-is-a-broken-access-control-vulnerability">What Is a Broken Access Control Vulnerability?</a></li>
+    <li><a href="#the-impact-and-risk-of-broken-access-controls">The Impact and Risk of Broken Access Controls</a></li>
+    <li><a href="#broken-access-control-categories">Broken Access Control Categories</a>
+      <ul style="padding-left: 20px; margin-top: 5px;">
+        <li><a href="#1-vertical-access-control">1. Vertical Access Control</a></li>
+        <li><a href="#2-horizontal-access-control">2. Horizontal Access Control</a></li>
+        <li><a href="#3-privilege-escalation-horizontal--vertical">3. Privilege Escalation (Horizontal / Vertical)</a></li>
+        <li><a href="#4-context-dependent-access-control">4. Context-dependent Access Control</a></li>
+        <li><a href="#5-referer-or-location-based-control">5. Referer or Location-based Control</a></li>
+      </ul>
+    </li>
+    <li><a href="#4-ways-to-prevent-broken-access-control">4 Ways to Prevent Broken Access Control</a></li>
+    <li><a href="#conclusion">Conclusion</a></li>
+    <li><a href="#references">References</a></li>
+  </ul>
+
+</div>
+
 
 ---
 
@@ -139,4 +152,5 @@ Implementing these strategies not only reduces your attack surface but also buil
 - [PortSwigger Academy – Access Control Vulnerabilities](https://portswigger.net/web-security/access-control)
 - [CWE-284: Improper Access Control](https://cwe.mitre.org/data/definitions/284.html)
 
+</div>
 
