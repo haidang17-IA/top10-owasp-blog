@@ -35,8 +35,6 @@ tag: [OWASP, Web Security, XSS]
 
 Cross-Site Scripting (XSS) is a client-side code injection vulnerability that allows attackers to inject malicious scripts into web pages viewed by other users. When executed in the victim’s browser, these scripts can steal cookies, session tokens, sensitive data, or perform actions on behalf of the user. XSS is included in the [OWASP Top 10](https://owasp.org/Top10) due to its high frequency and impact.
 
----
-
 ## Types of XSS
 
 ### 1. Stored XSS
@@ -57,7 +55,6 @@ Stored XSS occurs when malicious scripts are permanently saved on the target ser
 **Mitigation:**  
 Sanitize and validate all user inputs before storing them; use context-aware output encoding; avoid directly inserting untrusted data into HTML; apply a strict Content Security Policy (CSP).
 
----
 
 ### 2. Reflected XSS
 
