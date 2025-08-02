@@ -8,32 +8,32 @@ tag: [OWASP, Web Security, Authentication]
 <div style="max-width: 900px; margin: auto; padding: 20px;">
 
 <div style="text-align: center;">
-&nbsp; <img src="/top10-owasp-blog/assets/images/5.gif" alt=" " style="width: 70%; border: 1px solid #ccc; border-radius: 8px;">
-&nbsp; 
+<img src="/top10-owasp-blog/assets/images/5.gif" alt=" " style="width: 70%; border: 1px solid #ccc; border-radius: 8px;">
 </div>
 
 <div style="display: flex; gap: 30px; align-items: flex-start; margin-bottom: 30px;">
-&nbsp; <!-- Table of Contents -->
-&nbsp; <div style="flex: 1; background-color: #f9f9f9; padding: 20px; border-left: 5px solid #007acc; border-radius: 6px;">
-&nbsp;   <strong>Table of Contents</strong>
-&nbsp;   <ul>
-&nbsp;     <li><a href="#what-is-broken-authentication">What is Broken Authentication?</a></li>
-&nbsp;     <li><a href="#how-do-authentication-vulnerabilities-emerge">How Do Authentication Vulnerabilities Emerge?</a></li>
-&nbsp;     <li><a href="#6-most-common-authentication-vulnerabilities">6 Most Common Authentication Vulnerabilities</a>
-&nbsp;       <ul>
-&nbsp;         <li><a href="#1-flawed-brute-force-protection">1. Flawed Brute-Force Protection</a></li>
-&nbsp;         <li><a href="#2-username-enumeration">2. Username Enumeration</a></li>
-&nbsp;         <li><a href="#3-staying-logged-in">3. Staying Logged In</a></li>
-&nbsp;         <li><a href="#4-unsecure-password-change-and-recovery">4. Unsecure Password Change and Recovery</a></li>
-&nbsp;         <li><a href="#5-flawed-two-factor-authentication">5. Flawed Two-Factor Authentication</a></li>
-&nbsp;         <li><a href="#6-human-negligence">6. Human Negligence</a></li>
-&nbsp;       </ul>
-&nbsp;     </li>
-&nbsp;     <li><a href="#how-to-prevent-authentication-vulnerabilities">How to Prevent Authentication Vulnerabilities</a></li>
-&nbsp;     <li><a href="#conclusion">Conclusion</a></li>
-&nbsp;     <li><a href="#references">References</a></li>
-&nbsp;   </ul>
-&nbsp; </div>
+
+<!-- Table of Contents -->
+<div style="flex: 1; background-color: #f9f9f9; padding: 20px; border-left: 5px solid #007acc; border-radius: 6px;">
+<strong>Table of Contents</strong>
+<ul>
+  <li><a href="#what-is-broken-authentication">What is Broken Authentication?</a></li>
+  <li><a href="#how-do-authentication-vulnerabilities-emerge">How Do Authentication Vulnerabilities Emerge?</a></li>
+  <li><a href="#6-most-common-authentication-vulnerabilities">6 Most Common Authentication Vulnerabilities</a>
+    <ul>
+      <li><a href="#1-flawed-brute-force-protection">1. Flawed Brute-Force Protection</a></li>
+      <li><a href="#2-username-enumeration">2. Username Enumeration</a></li>
+      <li><a href="#3-staying-logged-in">3. Staying Logged In</a></li>
+      <li><a href="#4-unsecure-password-change-and-recovery">4. Unsecure Password Change and Recovery</a></li>
+      <li><a href="#5-flawed-two-factor-authentication">5. Flawed Two-Factor Authentication</a></li>
+      <li><a href="#6-human-negligence">6. Human Negligence</a></li>
+    </ul>
+  </li>
+  <li><a href="#how-to-prevent-authentication-vulnerabilities">How to Prevent Authentication Vulnerabilities</a></li>
+  <li><a href="#conclusion">Conclusion</a></li>
+  <li><a href="#references">References</a></li>
+</ul>
+</div>
 </div>
 
 ## What is Broken Authentication?
@@ -43,8 +43,7 @@ Authentication is the act of validating the user's credentials before granting h
 If authentication was not present, it would leave the critical resources (often with elevated privileges) exposed to anyone on the internet, including unauthenticated and unauthorized users. It ranks high on the [OWASP Top 10](https://owasp.org/Top10) because of its impact and frequency.
 
 <div style="text-align: center;">
-&nbsp; <img src="/top10-owasp-blog/assets/images/6.png" alt=" " style="width: 70%; border: 1px solid #ccc; border-radius: 8px;">
-&nbsp; 
+<img src="/top10-owasp-blog/assets/images/6.png" alt=" " style="width: 70%; border: 1px solid #ccc; border-radius: 8px;">
 </div>
 
 A simple authentication process often revolves around the validation of a supplied set of user credentials (email and password). However, various other authentication mechanisms are being applied today to prevent unauthenticated users from accessing controlled resources. And when this authentication method is incorrectly configured, it can open a new attack vector.
@@ -74,13 +73,13 @@ It can make an attacker’s life easier by lowering the cost for other attacks, 
 This process of username enumeration confirms whether or not a username is valid. For example:
 
 <div style="text-align: center;">
-&nbsp; <img src="/top10-owasp-blog/assets/images/2u.png" alt=" " style="width: 30%; border: 1px solid #ccc; border-radius: 8px;">
+<img src="/top10-owasp-blog/assets/images/2u.png" alt=" " style="width: 30%; border: 1px solid #ccc; border-radius: 8px;">
 </div>
 
 In this case, the username is correct but the password isn’t.
 
 <div style="text-align: center;">
-&nbsp; <img src="/top10-owasp-blog/assets/images/2u2.png" alt=" " style="width: 30%; border: 1px solid #ccc; border-radius: 8px;">
+<img src="/top10-owasp-blog/assets/images/2u2.png" alt=" " style="width: 30%; border: 1px solid #ccc; border-radius: 8px;">
 </div>
 
 Here, the username is invalid.
@@ -92,7 +91,7 @@ The problem with username enumeration is that attackers can tell what usernames 
 A "Remember me" or "Keep me logged in" checkbox beneath a login form makes it super easy to stay logged in after closing a session. It generates a cookie that lets you skip the process of logging in.
 
 <div style="text-align: center;">
-&nbsp; <img src="/top10-owasp-blog/assets/images/3s.png" alt=" " style="width: 30%; border: 1px solid #ccc; border-radius: 8px;">
+<img src="/top10-owasp-blog/assets/images/3s.png" alt=" " style="width: 30%; border: 1px solid #ccc; border-radius: 8px;">
 </div>
 
 They can use malicious techniques like brute-force attacks to predict cookies, and cross-site scripting (XSS) to hack user accounts by allowing a malicious server to make use of a legitimate cookie.
@@ -102,7 +101,7 @@ They can use malicious techniques like brute-force attacks to predict cookies, a
 Sometimes, users forget or just want to change their passwords and click the "Forgot password" or "Lost your password" links.
 
 <div style="text-align: center;">
-&nbsp; <img src="/top10-owasp-blog/assets/images/4u.png" alt=" " style="width: 30%; border: 1px solid #ccc; border-radius: 8px;">
+<img src="/top10-owasp-blog/assets/images/4u.png" alt=" " style="width: 30%; border: 1px solid #ccc; border-radius: 8px;">
 </div>
 
 The password reset process poses an authentication vulnerability if an application uses a weak password recovery mechanism such as easy security questions, no CAPTCHAs, or password reset e-mails with overly long or no timeouts.
@@ -122,7 +121,7 @@ Human error can result in serious authentication vulnerabilities that are far ea
 - Leaving a computer on and unlocked in a public place  
 - Losing devices to theft  
 - Leaking sensitive information to strangers  
-- Writing bad code
+- Writing bad code  
 
 ## How to Prevent Authentication Vulnerabilities?
 
