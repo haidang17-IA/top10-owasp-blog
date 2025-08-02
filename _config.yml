@@ -1,14 +1,12 @@
-title: OWASP Top 10 Blog
-description: A personal blog about OWASP Top 10 and PortSwigger labs.
-baseurl: "/top10-owasp-blog" 
+title: "OWASP Top 10 Blog"
+description: "A personal blog about OWASP Top 10 and PortSwigger labs."
+url: "https://haidang17-ia.github.io" # Không có dấu / ở cuối
+baseurl: "/top10-owasp-blog" # Tên repo GitHub Pages
+permalink: /:categories/:year/:month/:day/:title/
+
+markdown: kramdown
 theme: minima
-url: "https://haidang17-ia.github.io"
+
 plugins:
   - jekyll-feed
-
-defaults:
-  - scope:
-      path: ""
-      type: "posts"
-    values:
-      css: "/assets/css/custom.css"
+  - jekyll-seo-tag

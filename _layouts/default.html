@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ page.title }}</title>
+
+  <!-- CSS chính của theme -->
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+  
+  <!-- CSS tùy chỉnh -->
+  <link rel="stylesheet" href="{{ '/assets/css/custom.css?v=1.0' | relative_url }}">
+</head>
+<body>
+  <!-- Header -->
+  <header style="padding: 20px; background-color: #0d47a1; color: white; text-align: center;">
+    <h1>OWASP Top 10 Blog</h1>
+    <p>Learn, practice, and share knowledge about web security vulnerabilities</p>
+
+    <!-- Navigation -->
+    <nav style="margin-top: 15px;">
+      <a href="{{ '/' | relative_url }}" style="color: #fff; margin: 0 10px; text-decoration: none;">Home</a>
+      <a href="{{ '/about' | relative_url }}" style="color: #fff; margin: 0 10px; text-decoration: none;">About</a>
+      <a href="{{ '/categories' | relative_url }}" style="color: #fff; margin: 0 10px; text-decoration: none;">Categories</a>
+    </nav>
+  </header>
+
+  <!-- Nội dung -->
+  <main style="padding: 20px; max-width: 900px; margin: auto;">
+    {{ content }}
+  </main>
+
+  <!-- Footer -->
+  <footer style="background-color: #222; color: #aaa; text-align: center; padding: 10px; margin-top: 30px;">
+    <p>© {{ site.time | date: "%Y" }} OWASP Top 10 Blog. Built with Jekyll.</p>
+  </footer>
+</body>
+</html>
