@@ -11,7 +11,7 @@ tags: [owasp, Cross-site scripting , web-security, portswigger]
 <ul>
   <li><a href="#introduction">Introduction</a></li>
   <li><a href="#how-does-xss-work">How does XSS work?</a></li>
-  <li><a href="#xss-proof-of-concept"></a>XSS proof of concept</li>
+  <li><a href="#xss-proof-of-concept">XSS proof of concept</a></li>
   <li><a href="#1-Reflected-cross-site-scripting">1. Reflected cross-site scripting</a></li>
   <li><a href="#2-stored-cross-site-scripting">2.Stored cross-site scripting </a></li>
   <li><a href="#3-dom-based-cross-site-scripting">3. DOM-based cross-site scripting</a></li>
