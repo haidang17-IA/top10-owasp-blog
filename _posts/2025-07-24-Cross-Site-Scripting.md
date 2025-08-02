@@ -5,8 +5,6 @@ layout: post
 tag: [OWASP, Web Security, XSS]
 ---
 
-<div style="max-width: 900px; margin: auto; padding: 20px;">
-
 &nbsp; <!-- Table of Contents -->
 &nbsp; <div style="flex: 1; background-color: #f9f9f9; padding: 20px; border-left: 5px solid #007acc; border-radius: 6px;">
 
@@ -139,5 +137,4 @@ XSS is a critical vulnerability that undermines user trust and can cause severe 
 - [PortSwigger: XSS Cheat Sheet](https://portswigger.net/web-security/cross-site-scripting/cheat-sheet)
 - [Google CSP Evaluator](https://csp-evaluator.withgoogle.com/)
 
-</div>
 
