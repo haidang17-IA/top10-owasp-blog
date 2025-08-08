@@ -1,0 +1,282 @@
+<html lang="vi">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1" name="viewport"/>
+  <title>
+   Blog An Toàn Thông Tin - Top 10 OWASP
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <style>
+   body {
+      font-family: 'Inter', sans-serif;
+    }
+  </style>
+ </head>
+ <body class="bg-gray-50 text-gray-900 min-h-screen flex flex-col">
+  <header class="bg-white shadow-md sticky top-0 z-50">
+   <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+    <a class="text-2xl font-bold text-indigo-600 flex items-center" href="#">
+     <img alt="Logo icon with letters IT representing Information Technology" class="mr-2 rounded" height="40" src="https://storage.googleapis.com/a1aa/image/1ea16b59-7580-423d-f01c-b842ef5c8604.jpg" width="40"/>
+     An Toàn Thông Tin
+    </a>
+    <nav class="hidden md:flex space-x-8 font-semibold text-gray-700">
+     <a class="hover:text-indigo-600 transition" href="#">
+      Trang Chủ
+     </a>
+     <a class="hover:text-indigo-600 transition" href="#blog">
+      Bài Viết
+     </a>
+     <a class="hover:text-indigo-600 transition" href="#about">
+      Giới Thiệu
+     </a>
+     <a class="hover:text-indigo-600 transition" href="#contact">
+      Liên Hệ
+     </a>
+    </nav>
+    <button aria-label="Mở menu" class="md:hidden text-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-600" id="menu-btn">
+     <i class="fas fa-bars fa-lg">
+     </i>
+    </button>
+   </div>
+   <nav aria-label="Menu di động" class="md:hidden bg-white shadow-md hidden px-4 pb-4" id="mobile-menu">
+    <a class="block py-2 font-semibold text-gray-700 hover:text-indigo-600 transition" href="#">
+     Trang Chủ
+    </a>
+    <a class="block py-2 font-semibold text-gray-700 hover:text-indigo-600 transition" href="#blog">
+     Bài Viết
+    </a>
+    <a class="block py-2 font-semibold text-gray-700 hover:text-indigo-600 transition" href="#about">
+     Giới Thiệu
+    </a>
+    <a class="block py-2 font-semibold text-gray-700 hover:text-indigo-600 transition" href="#contact">
+     Liên Hệ
+    </a>
+   </nav>
+  </header>
+  <main class="flex-grow container mx-auto px-4 py-10">
+   <section class="text-center max-w-3xl mx-auto mb-16">
+    <h1 class="text-4xl md:text-5xl font-extrabold text-indigo-700 mb-4">
+     Blog An Toàn Thông Tin
+    </h1>
+    <p class="text-lg text-gray-700">
+     Chia sẻ kiến thức về các lỗ hổng bảo mật hàng đầu theo danh sách Top 10 OWASP. Cập nhật thường xuyên các bài viết chi tiết, hướng dẫn và phân tích sâu về bảo mật ứng dụng web.
+    </p>
+   </section>
+   <section class="max-w-5xl mx-auto" id="blog">
+    <h2 class="text-3xl font-bold text-indigo-700 mb-8 border-b-2 border-indigo-300 pb-2">
+     Các Bài Viết Mới Nhất
+    </h2>
+    <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+     <article class="bg-white rounded-lg shadow-md overflow-hidden flex flex-col">
+      <img alt="Ảnh minh họa lỗ hổng Injection trong bảo mật ứng dụng web, hình ảnh biểu tượng cảnh báo màu đỏ" class="w-full h-48 object-cover" height="400" src="https://storage.googleapis.com/a1aa/image/98c02d31-f901-4b01-eb69-d2baee730124.jpg" width="600"/>
+      <div class="p-6 flex flex-col flex-grow">
+       <h3 class="text-xl font-semibold mb-2 text-indigo-800">
+        Lỗ Hổng Injection (SQL, NoSQL, Command Injection)
+       </h3>
+       <p class="text-gray-700 flex-grow">
+        Tìm hiểu cách kẻ tấn công khai thác lỗ hổng Injection để truy cập dữ liệu trái phép và cách phòng tránh hiệu quả.
+       </p>
+       <a class="mt-4 inline-block text-indigo-600 font-semibold hover:underline" href="#">
+        Đọc tiếp →
+       </a>
+      </div>
+     </article>
+     <article class="bg-white rounded-lg shadow-md overflow-hidden flex flex-col">
+      <img alt="Ảnh minh họa lỗi Broken Authentication, hình ảnh khóa bị hỏng màu đỏ trên nền tối" class="w-full h-48 object-cover" height="400" src="https://storage.googleapis.com/a1aa/image/298487e0-25c3-42f3-a450-4007ba2017ba.jpg" width="600"/>
+      <div class="p-6 flex flex-col flex-grow">
+       <h3 class="text-xl font-semibold mb-2 text-indigo-800">
+        Lỗ Hổng Xác Thực Bị Phá Vỡ (Broken Authentication)
+       </h3>
+       <p class="text-gray-700 flex-grow">
+        Phân tích các kỹ thuật tấn công vào hệ thống xác thực và cách bảo vệ tài khoản người dùng.
+       </p>
+       <a class="mt-4 inline-block text-indigo-600 font-semibold hover:underline" href="#">
+        Đọc tiếp →
+       </a>
+      </div>
+     </article>
+     <article class="bg-white rounded-lg shadow-md overflow-hidden flex flex-col">
+      <img alt="Ảnh minh họa lộ lọt dữ liệu nhạy cảm, biểu tượng ổ khóa mở và dữ liệu bị rò rỉ" class="w-full h-48 object-cover" height="400" src="https://storage.googleapis.com/a1aa/image/015cc725-bc09-4c21-8102-12bf619c7393.jpg" width="600"/>
+      <div class="p-6 flex flex-col flex-grow">
+       <h3 class="text-xl font-semibold mb-2 text-indigo-800">
+        Lộ Lộ Dữ Liệu Nhạy Cảm (Sensitive Data Exposure)
+       </h3>
+       <p class="text-gray-700 flex-grow">
+        Các nguyên nhân gây rò rỉ dữ liệu và biện pháp mã hóa, bảo vệ thông tin người dùng.
+       </p>
+       <a class="mt-4 inline-block text-indigo-600 font-semibold hover:underline" href="#">
+        Đọc tiếp →
+       </a>
+      </div>
+     </article>
+     <article class="bg-white rounded-lg shadow-md overflow-hidden flex flex-col">
+      <img alt="Ảnh minh họa lỗ hổng XML External Entities (XXE), biểu tượng XML với cảnh báo màu đỏ" class="w-full h-48 object-cover" height="400" src="https://storage.googleapis.com/a1aa/image/a2883951-9301-4e9e-e1f0-107cf1c487a6.jpg" width="600"/>
+      <div class="p-6 flex flex-col flex-grow">
+       <h3 class="text-xl font-semibold mb-2 text-indigo-800">
+        Lỗ Hổng XML External Entities (XXE)
+       </h3>
+       <p class="text-gray-700 flex-grow">
+        Giải thích cách khai thác XXE và cách cấu hình an toàn cho XML parser.
+       </p>
+       <a class="mt-4 inline-block text-indigo-600 font-semibold hover:underline" href="#">
+        Đọc tiếp →
+       </a>
+      </div>
+     </article>
+     <article class="bg-white rounded-lg shadow-md overflow-hidden flex flex-col">
+      <img alt="Ảnh minh họa lỗi Broken Access Control, biểu tượng khóa bị vỡ trên nền màu đỏ" class="w-full h-48 object-cover" height="400" src="https://storage.googleapis.com/a1aa/image/2f756568-c229-4060-6609-de5297c01582.jpg" width="600"/>
+      <div class="p-6 flex flex-col flex-grow">
+       <h3 class="text-xl font-semibold mb-2 text-indigo-800">
+        Lỗi Kiểm Soát Truy Cập Bị Phá Vỡ (Broken Access Control)
+       </h3>
+       <p class="text-gray-700 flex-grow">
+        Tác hại của việc kiểm soát truy cập không đúng và cách thiết kế hệ thống an toàn.
+       </p>
+       <a class="mt-4 inline-block text-indigo-600 font-semibold hover:underline" href="#">
+        Đọc tiếp →
+       </a>
+      </div>
+     </article>
+     <article class="bg-white rounded-lg shadow-md overflow-hidden flex flex-col">
+      <img alt="Ảnh minh họa lỗi cấu hình bảo mật sai, biểu tượng bánh răng với dấu chấm than màu vàng" class="w-full h-48 object-cover" height="400" src="https://storage.googleapis.com/a1aa/image/32c13495-1648-4885-1ccf-b2ab25b3e3b5.jpg" width="600"/>
+      <div class="p-6 flex flex-col flex-grow">
+       <h3 class="text-xl font-semibold mb-2 text-indigo-800">
+        Cấu Hình Bảo Mật Sai (Security Misconfiguration)
+       </h3>
+       <p class="text-gray-700 flex-grow">
+        Các lỗi cấu hình phổ biến và cách kiểm tra, khắc phục để tăng cường bảo mật.
+       </p>
+       <a class="mt-4 inline-block text-indigo-600 font-semibold hover:underline" href="#">
+        Đọc tiếp →
+       </a>
+      </div>
+     </article>
+     <article class="bg-white rounded-lg shadow-md overflow-hidden flex flex-col">
+      <img alt="Ảnh minh họa lỗ hổng Cross-Site Scripting (XSS), biểu tượng mã script với cảnh báo màu đỏ" class="w-full h-48 object-cover" height="400" src="https://storage.googleapis.com/a1aa/image/599e7bc4-8d86-45cb-4816-79cc09b803d2.jpg" width="600"/>
+      <div class="p-6 flex flex-col flex-grow">
+       <h3 class="text-xl font-semibold mb-2 text-indigo-800">
+        Lỗ Hổng Cross-Site Scripting (XSS)
+       </h3>
+       <p class="text-gray-700 flex-grow">
+        Cách kẻ tấn công chèn mã độc vào trang web và biện pháp phòng chống hiệu quả.
+       </p>
+       <a class="mt-4 inline-block text-indigo-600 font-semibold hover:underline" href="#">
+        Đọc tiếp →
+       </a>
+      </div>
+     </article>
+     <article class="bg-white rounded-lg shadow-md overflow-hidden flex flex-col">
+      <img alt="Ảnh minh họa lỗ hổng Insecure Deserialization, biểu tượng hộp dữ liệu bị lỗi màu đỏ" class="w-full h-48 object-cover" height="400" src="https://storage.googleapis.com/a1aa/image/78888f00-5548-441f-249b-c12445765b4c.jpg" width="600"/>
+      <div class="p-6 flex flex-col flex-grow">
+       <h3 class="text-xl font-semibold mb-2 text-indigo-800">
+        Lỗ Hổng Insecure Deserialization
+       </h3>
+       <p class="text-gray-700 flex-grow">
+        Tìm hiểu cách khai thác và phòng tránh các lỗi liên quan đến tuần tự hóa dữ liệu không an toàn.
+       </p>
+       <a class="mt-4 inline-block text-indigo-600 font-semibold hover:underline" href="#">
+        Đọc tiếp →
+       </a>
+      </div>
+     </article>
+     <article class="bg-white rounded-lg shadow-md overflow-hidden flex flex-col">
+      <img alt="Ảnh minh họa việc sử dụng các thành phần phần mềm có lỗ hổng bảo mật, biểu tượng bánh răng với dấu cảnh báo" class="w-full h-48 object-cover" height="400" src="https://storage.googleapis.com/a1aa/image/c47e23ab-9e5b-44b1-f92f-63bfb15fe757.jpg" width="600"/>
+      <div class="p-6 flex flex-col flex-grow">
+       <h3 class="text-xl font-semibold mb-2 text-indigo-800">
+        Sử Dụng Thành Phần Có Lỗ Hổng Bảo Mật (Using Components with Known Vulnerabilities)
+       </h3>
+       <p class="text-gray-700 flex-grow">
+        Tác hại của việc dùng thư viện, framework lỗi thời và cách quản lý cập nhật.
+       </p>
+       <a class="mt-4 inline-block text-indigo-600 font-semibold hover:underline" href="#">
+        Đọc tiếp →
+       </a>
+      </div>
+     </article>
+     <article class="bg-white rounded-lg shadow-md overflow-hidden flex flex-col">
+      <img alt="Ảnh minh họa thiếu ghi nhật ký và giám sát, biểu tượng nhật ký với dấu chấm than màu vàng" class="w-full h-48 object-cover" height="400" src="https://storage.googleapis.com/a1aa/image/15e51339-8572-4f84-af43-934ff37dc381.jpg" width="600"/>
+      <div class="p-6 flex flex-col flex-grow">
+       <h3 class="text-xl font-semibold mb-2 text-indigo-800">
+        Thiếu Ghi Nhật Ký và Giám Sát (Insufficient Logging and Monitoring)
+       </h3>
+       <p class="text-gray-700 flex-grow">
+        Tầm quan trọng của việc ghi nhật ký và giám sát để phát hiện và phản ứng kịp thời các sự cố bảo mật.
+       </p>
+       <a class="mt-4 inline-block text-indigo-600 font-semibold hover:underline" href="#">
+        Đọc tiếp →
+       </a>
+      </div>
+     </article>
+    </div>
+   </section>
+   <section class="max-w-4xl mx-auto mt-20 bg-white rounded-lg shadow-md p-8" id="about">
+    <h2 class="text-3xl font-bold text-indigo-700 mb-6 border-b-2 border-indigo-300 pb-2">
+     Giới Thiệu
+    </h2>
+    <p class="text-gray-700 leading-relaxed">
+     Blog này được tạo ra nhằm mục đích chia sẻ kiến thức về an toàn thông tin, đặc biệt tập trung vào các lỗ hổng bảo mật phổ biến nhất theo danh sách Top 10 OWASP. Các bài viết được phân tích chi tiết, dễ hiểu, giúp bạn đọc nâng cao nhận thức và kỹ năng bảo mật ứng dụng web.
+    </p>
+   </section>
+   <section class="max-w-4xl mx-auto mt-20 bg-white rounded-lg shadow-md p-8" id="contact">
+    <h2 class="text-3xl font-bold text-indigo-700 mb-6 border-b-2 border-indigo-300 pb-2">
+     Liên Hệ
+    </h2>
+    <form action="https://formspree.io/f/mayvlqyo" class="space-y-6" method="POST">
+     <div>
+      <label class="block text-gray-700 font-semibold mb-2" for="name">
+       Họ và tên
+      </label>
+      <input class="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500" id="name" name="name" placeholder="Nhập họ và tên của bạn" required="" type="text"/>
+     </div>
+     <div>
+      <label class="block text-gray-700 font-semibold mb-2" for="email">
+       Email
+      </label>
+      <input class="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500" id="email" name="_replyto" placeholder="Nhập email của bạn" required="" type="email"/>
+     </div>
+     <div>
+      <label class="block text-gray-700 font-semibold mb-2" for="message">
+       Nội dung
+      </label>
+      <textarea class="w-full border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500" id="message" name="message" placeholder="Nhập nội dung liên hệ" required="" rows="5"></textarea>
+     </div>
+     <button class="bg-indigo-600 text-white font-semibold px-6 py-3 rounded-md hover:bg-indigo-700 transition" type="submit">
+      Gửi
+     </button>
+    </form>
+   </section>
+  </main>
+  <footer class="bg-white border-t border-gray-200 mt-20">
+   <div class="container mx-auto px-4 py-6 flex flex-col md:flex-row justify-between items-center text-gray-600 text-sm">
+    <p>
+     © 2024 Blog An Toàn Thông Tin. All rights reserved.
+    </p>
+    <div class="flex space-x-6 mt-4 md:mt-0">
+     <a aria-label="GitHub" class="hover:text-indigo-600 transition" href="https://github.com/" rel="noopener" target="_blank">
+      <i class="fab fa-github fa-lg">
+      </i>
+     </a>
+     <a aria-label="Facebook" class="hover:text-indigo-600 transition" href="https://www.facebook.com/" rel="noopener" target="_blank">
+      <i class="fab fa-facebook fa-lg">
+      </i>
+     </a>
+     <a aria-label="Twitter" class="hover:text-indigo-600 transition" href="https://twitter.com/" rel="noopener" target="_blank">
+      <i class="fab fa-twitter fa-lg">
+      </i>
+     </a>
+    </div>
+   </div>
+  </footer>
+  <script>
+   const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  </script>
+ </body>
+</html>
