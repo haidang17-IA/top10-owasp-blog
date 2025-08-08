@@ -19,3 +19,4 @@ defaults:
       path: ""
     values:
       layout: default
+permalink: /:year/:month/:day/:title.html
