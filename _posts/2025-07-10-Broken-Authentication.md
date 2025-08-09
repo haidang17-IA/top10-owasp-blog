@@ -8,7 +8,7 @@ tag: [OWASP, Web Security, Authentication]
 <div style="max-width: 900px; margin: auto; padding: 20px;">
 
 <div style="text-align: center;">
-<img src="/top10-owasp-blog/assets/images/5.gif" alt=" " style="width: 70%; border: 1px solid #ccc; border-radius: 8px;">
+<img src="/top10-owasp-blog/assets/images/5.gif" alt=" " style="width: 40%; border: 1px solid #ccc; border-radius: 8px;">
 </div>
 
 <div style="display: flex; gap: 30px; align-items: flex-start; margin-bottom: 30px;">
@@ -43,7 +43,7 @@ Authentication is the act of validating the user's credentials before granting h
 If authentication was not present, it would leave the critical resources (often with elevated privileges) exposed to anyone on the internet, including unauthenticated and unauthorized users. It ranks high on the [OWASP Top 10](https://owasp.org/Top10) because of its impact and frequency.
 
 <div style="text-align: center;">
-<img src="/top10-owasp-blog/assets/images/6.png" alt=" " style="width: 70%; border: 1px solid #ccc; border-radius: 8px;">
+<img src="/top10-owasp-blog/assets/images/6.png" alt=" " style="width: 40%; border: 1px solid #ccc; border-radius: 8px;">
 </div>
 
 A simple authentication process often revolves around the validation of a supplied set of user credentials (email and password). However, various other authentication mechanisms are being applied today to prevent unauthenticated users from accessing controlled resources. And when this authentication method is incorrectly configured, it can open a new attack vector.
