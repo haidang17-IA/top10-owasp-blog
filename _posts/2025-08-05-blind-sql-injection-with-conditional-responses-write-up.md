@@ -14,11 +14,11 @@ tags: \[owasp, sql-injection, web-security, portswigger]
 
 
 
-\# Lab 9: Blind SQL Injection with Conditional Responses
+# Lab 9: Blind SQL Injection with Conditional Responses
 
 
 
-\## Lab Description
+## Lab Description
 
 This lab contains a Blind SQL Injection vulnerability. The application uses a `trackingId` cookie for analytics and performs a SQL query containing the cookie value.
 
@@ -38,11 +38,11 @@ Your task is to exploit the Blind SQL Injection vulnerability to retrieve the pa
 
 
 
-\## Analysis and Exploitation
+## Analysis and Exploitation
 
 
 
-\### 1. Confirm the Blind SQLi vulnerability
+### 1. Confirm the Blind SQLi vulnerability
 
 Request example:
 
@@ -88,7 +88,7 @@ This confirms the parameter is vulnerable to Blind SQL Injection.
 
 
 
-\### 2. Confirm the users table exists
+### 2. Confirm the users table exists
 
 
 
@@ -118,7 +118,7 @@ and (select 'x' from users LIMIT 1)='x'--
 
 
 
-\### 3. Confirm administrator user exists
+### 3. Confirm administrator user exists
 
 --
 
@@ -144,7 +144,7 @@ and (select username from users where username='administrator')='administrator'-
 
 
 
-\### 4. Determine the password length
+### 4. Determine the password length
 
 
 
@@ -178,7 +178,7 @@ By adjusting the number in LENGTH(password)=X and observing the response, you ca
 
 
 
-\### 5. Extract the password character-by-character
+### 5. Extract the password character-by-character
 
 
 
@@ -197,15 +197,15 @@ By adjusting the number in LENGTH(password)=X and observing the response, you ca
 
 
 
-\-Go to the Payloads tab.
+-Go to the Payloads tab.
 
 
 
-\-Set the payload type to Simple list.
+-Set the payload type to Simple list.
 
 
 
-\-Enter all possible characters:
+-Enter all possible characters:
 
 --
 
@@ -241,7 +241,7 @@ Example found password in my lab :
 
 
 
-\### 6.Verify the password
+### 6.Verify the password
 
 
 
@@ -265,7 +265,7 @@ in lab with Username: administrator and Password: 52rabjtjpa749cy0bvo6
 
 
 
-\### Conclusion
+### Conclusion
 
 
 
