@@ -7,32 +7,31 @@ tag: [OWASP, Sensitive Data, XXE, PortSwigger]
 
 <div style="display: flex; gap: 30px; align-items: flex-start; margin-bottom: 30px;">
 
-&nbsp; <!-- Table of Contents -->
-&nbsp; <div style="flex: 1; background-color: #f9f9f9; padding: 20px; border-left: 5px solid #007acc; border-radius: 6px;">
+ <!-- Table of Contents -->
+ <div style="flex: 1; background-color: #f9f9f9; padding: 20px; border-left: 5px solid #007acc; border-radius: 6px;">
 
-&nbsp;   <strong>Table of Contents</strong>
-&nbsp;   <ul>
-&nbsp;     <li><a href="#1-sensitive-data-exposure">1. Sensitive Data Exposure</a>
-&nbsp;       <ul>
-&nbsp;         <li><a href="#11-what-is-sensitive-data-exposure">1.1 What is Sensitive Data Exposure?</a></li>
-&nbsp;         <li><a href="#12-how-it-works">1.2 How It Works</a></li>
-&nbsp;         <li><a href="#13-exploitation">1.3 Exploitation</a></li>
-&nbsp;         <li><a href="#14-mitigation">1.4 Mitigation</a></li>
-&nbsp;       </ul>
-&nbsp;     </li>
-&nbsp;     <li><a href="#2-xml-external-entities-xxe">2. XML External Entities (XXE)</a>
-&nbsp;       <ul>
-&nbsp;         <li><a href="#21-what-is-xml-external-entities-xxe">2.1 What is XML External Entities (XXE)?</a></li>
-&nbsp;         <li><a href="#22-how-it-works">2.2 How It Works</a></li>
-&nbsp;         <li><a href="#23-exploitation">2.3 Exploitation</a></li>
-&nbsp;         <li><a href="#24-mitigation">2.4 Mitigation</a></li>
-&nbsp;       </ul>
-&nbsp;     </li>
-&nbsp;     <li><a href="#3-conclusion">3. Conclusion</a></li>
-&nbsp;     <li><a href="#4-references">4. References</a></li>
-&nbsp;   </ul>
-
-&nbsp; </div>
+   <strong>Table of Contents</strong>
+  <ul>
+     <li><a href="#1-sensitive-data-exposure">1. Sensitive Data Exposure</a>
+       <ul>
+         <li><a href="#11-what-is-sensitive-data-exposure">1.1 What is Sensitive Data Exposure?</a></li>
+         <li><a href="#12-how-it-works">1.2 How It Works</a></li>
+        <li><a href="#13-exploitation">1.3 Exploitation</a></li>
+         <li><a href="#14-mitigation">1.4 Mitigation</a></li>
+       </ul>
+     </li>
+     <li><a href="#2-xml-external-entities-xxe">2. XML External Entities (XXE)</a>
+       <ul>
+         <li><a href="#21-what-is-xml-external-entities-xxe">2.1 What is XML External Entities (XXE)?</a></li>
+         <li><a href="#22-how-it-works">2.2 How It Works</a></li>
+         <li><a href="#23-exploitation">2.3 Exploitation</a></li>
+         <li><a href="#24-mitigation">2.4 Mitigation</a></li>
+       </ul>
+     </li>
+    <li><a href="#3-conclusion">3. Conclusion</a></li>
+     <li><a href="#4-references">4. References</a></li>
+   </ul>
+ </div>
 </div>
 
 ## 1. Sensitive Data Exposure
