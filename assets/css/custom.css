@@ -1,22 +1,92 @@
-/* Giới hạn chiều rộng nội dung bài viết */
-.post-content {
-  max-width: 900px;
-  margin: 0 auto;
-  padding: 0 1rem;
+/* ==== STYLE CHO TRANG HOME ==== */
+
+/* Reset chung */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f9fafb;
+  color: #111827;
+  line-height: 1.6;
 }
 
-/* Ảnh không bị phóng quá khổ */
-.post-content img {
-  max-width: 100%;
-  height: auto;
+/* Curved slider section */
+.curved-slider {
+  position: relative;
+  background: linear-gradient(to right, #0f172a, #1e293b);
+  color: white;
+  padding: 100px 20px 120px;
+  text-align: center;
+  overflow: hidden;
+}
+
+.slides {
+  max-width: 800px;
+  margin: auto;
+}
+
+.slide {
+  display: none;
+  animation: fade 1s ease-in-out;
+}
+
+.slide.active {
   display: block;
-  margin: 1rem auto;
 }
 
-/* Font chữ lớn hơn khi màn hình rộng */
-@media (min-width: 1200px) {
-  .post-content {
-    font-size: 1.125rem;
-    line-height: 1.7;
-  }
+@keyframes fade {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+/* Nút điều hướng slider */
+.slider-nav {
+  margin-top: 30px;
+}
+
+.slider-nav button {
+  background-color: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+  font-size: 24px;
+  padding: 10px 20px;
+  margin: 0 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.slider-nav button:hover {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+/* Đường cong */
+.curve {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 0;
+}
+
+main {
+  position: relative;
+  z-index: 1;
+}
+
+/* Khu vực bài viết trên Home */
+section.posts {
+  padding: 50px 20px;
+  max-width: 900px;
+  margin: auto;
+  text-align: center;
+}
+
+section.posts h2 {
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+
+section.posts p {
+  font-size: 18px;
+  color: #4b5563;
 }
