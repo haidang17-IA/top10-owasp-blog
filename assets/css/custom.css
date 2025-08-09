@@ -1,159 +1,22 @@
----
-layout: null
-title: "OWASP Top 10 Blog"
----
+/* Giới hạn chiều rộng nội dung bài viết */
+.post-content {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>{{ site.title }}</title>
-  <link rel="stylesheet" href="{{ '/assets/css/custom.css' | relative_url }}">
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #f9fafb;
-      color: #111827;
-    }
+/* Ảnh không bị phóng quá khổ */
+.post-content img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 1rem auto;
+}
 
-    .curved-slider {
-      position: relative;
-      background: linear-gradient(to right, #0f172a, #1e293b);
-      color: white;
-      padding: 100px 20px 120px;
-      text-align: center;
-      overflow: hidden;
-    }
-
-    .slides {
-      max-width: 800px;
-      margin: auto;
-    }
-
-    .slide {
-      display: none;
-      animation: fade 1s ease-in-out;
-    }
-
-    .slide.active {
-      display: block;
-    }
-
-    @keyframes fade {
-      from {opacity: 0;}
-      to {opacity: 1;}
-    }
-
-    .slider-nav {
-      margin-top: 30px;
-    }
-
-    .slider-nav button {
-      background-color: rgba(255, 255, 255, 0.2);
-      border: none;
-      color: white;
-      font-size: 24px;
-      padding: 10px 20px;
-      margin: 0 10px;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: background 0.3s ease;
-    }
-
-    .slider-nav button:hover {
-      background-color: rgba(255, 255, 255, 0.4);
-    }
-
-    .curve {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      z-index: 0;
-    }
-
-    main {
-      position: relative;
-      z-index: 1;
-    }
-
-    section.posts {
-      padding: 50px 20px;
-      max-width: 900px;
-      margin: auto;
-      text-align: center;
-    }
-
-    section.posts h2 {
-      font-size: 32px;
-      margin-bottom: 10px;
-    }
-
-    section.posts p {
-      font-size: 18px;
-      color: #4b5563;
-    }
-  </style>
-</head>
-<body>
-  <section class="curved-slider">
-    <div class="slides">
-      <div class="slide active">
-        <h1>Welcome to My OWASP Blog</h1>
-        <p>Explore vulnerabilities, payloads, and knowledge from PortSwigger & OWASP Top 10</p>
-      </div>
-      <div class="slide">
-        <h1>SQL Injection</h1>
-        <p>Learn about extracting hidden data, bypassing logic, and attacking databases</p>
-      </div>
-      <div class="slide">
-        <h1>XXE, XSS, and more</h1>
-        <p>Understand how common web vulnerabilities work and how to prevent them</p>
-      </div>
-    </div>
-
-    <div class="slider-nav">
-      <button onclick="prevSlide()">◀</button>
-      <button onclick="nextSlide()">▶</button>
-    </div>
-
-    <svg viewBox="0 0 1440 320" class="curve">
-      <path fill="#f3f4f6" fill-opacity="1"
-        d="M0,192L60,176C120,160,240,128,360,138.7C480,149,600,203,720,218.7C840,235,960,213,1080,192C1200,171,1320,149,1380,138.7L1440,128L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z">
-      </path>
-    </svg>
-  </section>
-
-  <main>
-    <section class="posts">
-      <h2>Latest Posts</h2>
-      <p>This blog documents my journey in understanding web application security, starting with Injection vulnerabilities from PortSwigger and OWASP Top 10.</p>
-    </section>
-  </main>
-
-  <script>
-    let currentSlide = 0;
-    const slides = document.querySelectorAll('.slide');
-
-    function showSlide(index) {
-      slides.forEach((slide, i) => {
-        slide.classList.toggle('active', i === index);
-      });
-    }
-
-    function nextSlide() {
-      currentSlide = (currentSlide + 1) % slides.length;
-      showSlide(currentSlide);
-    }
-
-    function prevSlide() {
-      currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-      showSlide(currentSlide);
-    }
-
-    setInterval(nextSlide, 6000);
-  </script>
-</body>
-</html>
+/* Font chữ lớn hơn khi màn hình rộng */
+@media (min-width: 1200px) {
+  .post-content {
+    font-size: 1.125rem;
+    line-height: 1.7;
+  }
+}

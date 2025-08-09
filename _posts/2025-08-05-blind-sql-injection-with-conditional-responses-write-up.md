@@ -6,7 +6,7 @@ date: 2025-08-05
 
 layout: write-up
 
-tags: \[owasp, sql-injection, web-security, portswigger]
+tags: [owasp, sql-injection, web-security, portswigger]
 
 ---
 
@@ -24,7 +24,7 @@ This lab contains a Blind SQL Injection vulnerability. The application uses a `t
 
 
 
-The results of the SQL query are not returned directly, and no error messages are displayed. However, if the query returns any rows, the page includes the message \*\*"Welcome back"\*\*.
+The results of the SQL query are not returned directly, and no error messages are displayed. However, if the query returns any rows, the page includes the message **"Welcome back"**.
 
 
 
