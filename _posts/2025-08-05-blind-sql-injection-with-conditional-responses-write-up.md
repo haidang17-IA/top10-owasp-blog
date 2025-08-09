@@ -4,7 +4,7 @@ title: "Lab 9: Blind SQL Injection with Conditional Responses"
 
 date: 2025-08-05
 
-layout: write-up
+layout: post
 
 tags: [owasp, sql-injection, web-security, portswigger]
 
@@ -76,13 +76,12 @@ If not → no message is shown.
 
 Boolean-based test:
 
---
-
+```
 ' AND 1=1--   -- TRUE → Welcome back
-
 ' AND 1=0--   -- FALSE → No Welcome back
+```
 
---
+
 
 This confirms the parameter is vulnerable to Blind SQL Injection.
 
