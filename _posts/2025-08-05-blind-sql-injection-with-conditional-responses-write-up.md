@@ -4,7 +4,7 @@ title: "Lab 9: Blind SQL Injection with Conditional Responses"
 
 date: 2025-08-05
 
-layout: post
+layout: write-up
 
 tags: \[owasp, sql-injection, web-security, portswigger]
 
