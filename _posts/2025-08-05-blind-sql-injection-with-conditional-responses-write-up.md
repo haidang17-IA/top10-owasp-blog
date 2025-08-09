@@ -64,7 +64,7 @@ If not → no message is shown.
 
 <div style="text-align: center;">
 
-&nbsp; <img src="/top10-owasp-blog/assets/images/wu1.png" alt=" " style="width: 40%; border: 1px solid #ccc; border-radius: 8px;">
+&nbsp; <img src="/top10-owasp-blog/assets/images/wu1.png" alt=" " style="width: 20%; border: 1px solid #ccc; border-radius: 8px;">
 
 &nbsp; <p><em>Figure 1: Tested the cookie value </em></p>
 
@@ -103,7 +103,7 @@ and (select 'x' from users LIMIT 1)='x'--
 
 <div style="text-align: center;">
 
-  <img src="/top10-owasp-blog/assets/images/wu2.png" alt=" " style="width: 40%; border: 1px solid #ccc; border-radius: 8px;">
+  <img src="/top10-owasp-blog/assets/images/wu2.png" alt=" " style="width: 20%; border: 1px solid #ccc; border-radius: 8px;">
 
   <p><em>Figure 1: Tested the cookie value </em></p>
 
@@ -135,7 +135,7 @@ and (select username from users where username='administrator')='administrator'-
 
 <div style="text-align: center;">
 
-  <img src="/top10-owasp-blog/assets/images/wu3.png" alt=" " style="width: 40%; border: 1px solid #ccc; border-radius: 8px;">
+  <img src="/top10-owasp-blog/assets/images/wu3.png" alt=" " style="width: 20%; border: 1px solid #ccc; border-radius: 8px;">
 
   <p><em>Figure 1: Tested the cookie value </em></p>
 
