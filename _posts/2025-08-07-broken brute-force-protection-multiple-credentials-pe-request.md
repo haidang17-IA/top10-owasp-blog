@@ -14,15 +14,13 @@ layout: post
 
 
 
-tags: \[owasp, sql-injection, web-security, portswigger]
+tags: \[owasp, Broken brute-force, web-security, portswigger]
 
 
 
 ---
 
 
-
-\# Broken brute-force protection, multiple credentials per request
 
 
 
@@ -84,8 +82,6 @@ This means we can:
 
 \## Steps to Exploit
 
-&nbsp;
-
 \### Step 1 — Identify the login request
 
 -Log in with your own credentials (wiener:peter) and intercept the request in Burp Suite.
@@ -105,6 +101,8 @@ This means we can:
 }
 
 ```
+
+
 <div style="text-align: center;">
 
 &nbsp; <img src="/top10-owasp-blog/assets/images/brw1.png" alt="POST/LOGIN body" style="width: 40%; border: 1px solid #ccc; border-radius: 8px;">
@@ -112,6 +110,8 @@ This means we can:
 &nbsp; <p><em>Figure 1: </em> Tested the cookie value </p>
 
 </div>
+
+
 
 
 
@@ -142,11 +142,13 @@ This means we can:
 
 
 
+
+
 <div style="text-align: center;">
 
   <img src="/top10-owasp-blog/assets/images/brw2.png" alt=" Password List " style="width: 40%; border: 1px solid #ccc; border-radius: 8px;">
 
-  <p><em>Figure 1: </em> Tested the cookie value </p>
+  <p><em>Figure 2: </em>  </p>
 
 </div>
 
@@ -172,11 +174,13 @@ Set-Cookie: session=YOUR\_SESSION\_ID; Secure; HttpOnly
 
 ```
 
+
+
 <div style="text-align: center;">
 
   <img src="/top10-owasp-blog/assets/images/brw3.png" alt=" take the session " style="width: 40%; border: 1px solid #ccc; border-radius: 8px;">
 
-  <p><em>Figure 1: </em> Tested the cookie value </p>
+  <p><em>Figure 3: </em>  </p>
 
 </div>
 
@@ -184,6 +188,8 @@ Set-Cookie: session=YOUR\_SESSION\_ID; Secure; HttpOnly
 
 
 ==> This session value belongs to carlos.
+
+
 
 
 
@@ -203,11 +209,13 @@ Set-Cookie: session=YOUR\_SESSION\_ID; Secure; HttpOnly
 
 
 
+
+
 <div style="text-align: center;">
 
   <img src="/top10-owasp-blog/assets/images/brw4.png" alt=" " style="width: 40%; border: 1px solid #ccc; border-radius: 8px;">
 
-  <p><em>Figure 1: </em> Tested the cookie value </p>
+  <p><em>Figure 4: </em>  </p>
 
 </div>
 
@@ -242,6 +250,8 @@ To prevent this vulnerability:
 
 
 4\.Monitor unusual login patterns (e.g., large JSON arrays in authentication requests).
+
+
 
 
 
