@@ -105,7 +105,9 @@ By adjusting the number in LENGTH(password)=X and observing the response, you ca
 * Configure the payload set
 
 -Go to the Payloads tab.
+
 -Set the payload type to Simple list.
+
 -Enter all possible characters:
 
 ```
@@ -140,6 +142,29 @@ Use Burp Repeater to check if it matches the administrator account:
 ==> If it returns the "Welcome back" message → the password is correct , and you can test
 in lab with Username: administrator and Password: 52rabjtjpa749cy0bvo6
 
+###  Mitigation
+
+To prevent boolean-based blind SQL injection — and all forms of SQL injection — the application logic must never concatenate untrusted input (such as cookies, query parameters, or form fields) directly into SQL queries.
+
+## Key mitigations include:
+
+1. Use parameterized queries  
+   Ensure that all SQL queries are constructed using placeholders (`?`) and parameter binding provided by your framework or database library, so that user input is treated purely as data, never as executable SQL code.
+   
+2. Strict input validation and sanitization
+   - Reject unexpected characters (quotes, semicolons, comment markers) when possible.  
+   - Enforce strict data types (e.g., integers for numeric fields).
+   
+3. Least privilege database accounts  
+   The application’s database user should have only the permissions it needs (e.g., read-only for certain features), so that even if an injection occurs, the damage is limited.
+    
+4. Regular security testing
+   Include SQL injection checks in automated tests, code reviews, and security scans.
+
+By separating data from code and avoiding dynamic query building, the logic flaw exploited in this lab can be eliminated entirely.
+
+
+
 ### Conclusion
 This lab clearly demonstrates how to exploit a Boolean-based Blind SQL Injection when the application does not display query results directly and provides no error messages.
 By observing the server’s behavior (specifically, the appearance of the "Welcome back" message), we were able to:
@@ -150,6 +175,8 @@ By observing the server’s behavior (specifically, the appearance of the "Welco
 
 3.Assemble the complete password and verify it using Burp Suite Repeater
 The final outcome was retrieving the administrator’s password and logging in successfully, thereby solving the lab.
+
+
 
 
 
