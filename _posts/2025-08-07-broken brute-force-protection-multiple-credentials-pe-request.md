@@ -22,6 +22,8 @@ tags: \[owasp, sql-injection, web-security, portswigger]
 
 
 
+\# Broken brute-force protection, multiple credentials per request
+
 
 
 \### Lab Description
@@ -36,7 +38,11 @@ The goal is to brute-force the password for the carlos user and log in as them.
 
 
 
-\### Understanding the Logic
+---
+
+
+
+\## Understanding the Logic
 
 
 
@@ -76,11 +82,11 @@ This means we can:
 
 
 
-\### Steps to Exploit
+\## Steps to Exploit
 
 &nbsp;
 
-&nbsp;## Step 1 — Identify the login request
+\### Step 1 — Identify the login request
 
 -Log in with your own credentials (wiener:peter) and intercept the request in Burp Suite.
 
@@ -109,7 +115,7 @@ This means we can:
 
 
 
-\## Step 2 — Test multiple passwords in one request
+\### Step 2 — Test multiple passwords in one request
 
 
 
@@ -130,7 +136,7 @@ This means we can:
 
 
 
-\## Step 3 — Perform brute-force attack
+\### Step 3 — Perform brute-force attack
 
 -Load a large list of common passwords (e.g., top-100.txt) or Authentication lab passwords in PortSwigger  into the array.
 
@@ -138,7 +144,7 @@ This means we can:
 
 <div style="text-align: center;">
 
-  <img src="/top10-owasp-blog/assets/images/brw2.png" alt="POST/LOGIN body" style="width: 20%; border: 1px solid #ccc; border-radius: 8px;">
+  <img src="/top10-owasp-blog/assets/images/brw2.png" alt=" Password List " style="width: 40%; border: 1px solid #ccc; border-radius: 8px;">
 
   <p><em>Figure 1: </em> Tested the cookie value </p>
 
@@ -156,7 +162,7 @@ This means we can:
 
 
 
-\## Step 4 — Extract the session ID
+\### Step 4 — Extract the session ID
 
 -In the Raw HTTP response of the successful login request, check the Set-Cookie header:
 
@@ -168,7 +174,7 @@ Set-Cookie: session=YOUR\_SESSION\_ID; Secure; HttpOnly
 
 <div style="text-align: center;">
 
-  <img src="/top10-owasp-blog/assets/images/brw3.png" alt="POST/LOGIN body" style="width: 40%; border: 1px solid #ccc; border-radius: 8px;">
+  <img src="/top10-owasp-blog/assets/images/brw3.png" alt=" take the session " style="width: 40%; border: 1px solid #ccc; border-radius: 8px;">
 
   <p><em>Figure 1: </em> Tested the cookie value </p>
 
@@ -181,7 +187,7 @@ Set-Cookie: session=YOUR\_SESSION\_ID; Secure; HttpOnly
 
 
 
-\## Step 5 — Replace the session in the browser
+\### Step 5 — Replace the session in the browser
 
 
 
@@ -199,7 +205,7 @@ Set-Cookie: session=YOUR\_SESSION\_ID; Secure; HttpOnly
 
 <div style="text-align: center;">
 
-  <img src="/top10-owasp-blog/assets/images/brw4.png" alt="POST/LOGIN body" style="width: 40%; border: 1px solid #ccc; border-radius: 8px;">
+  <img src="/top10-owasp-blog/assets/images/brw4.png" alt=" " style="width: 40%; border: 1px solid #ccc; border-radius: 8px;">
 
   <p><em>Figure 1: </em> Tested the cookie value </p>
 
@@ -217,7 +223,7 @@ Set-Cookie: session=YOUR\_SESSION\_ID; Secure; HttpOnly
 
 
 
-\### Mitigation
+\## Mitigation
 
 To prevent this vulnerability:
 

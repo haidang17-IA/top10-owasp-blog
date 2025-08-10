@@ -12,7 +12,7 @@ tags: [owasp, sql-injection, web-security, portswigger]
 
 # Lab 9: Blind SQL Injection with Conditional Responses
 
-## Lab Description
+### Lab Description
 
 This lab contains a Blind SQL Injection vulnerability. The application uses a `trackingId` cookie for analytics and performs a SQL query containing the cookie value.
 
